@@ -1,0 +1,109 @@
+.solicitar-container {
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.encabezado{
+    background: rgba(0, 0, 0, 0.598);
+    width: 100%;
+}
+
+.solicitar-container .encabezado h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px black;
+    font-size: 40px;
+    color: white;
+}
+
+.solicitar-container .encabezado h1::before{
+    content: '😎';
+}
+.solicitar-container .encabezado h1::after{
+    content: '😎';
+}
+
+.informativa {
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    padding: 20px;
+    text-overflow: ellipsis;
+}
+
+.centered{
+    text-align: center;
+}
+
+.box h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0px 0px 1px black;
+    letter-spacing: 1px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.box p {
+    text-align: justify;
+    font-size: 20px;
+}
+
+.box p span {
+    color: brown;
+    font-weight: bolder;
+}
+
+.box ul{
+    list-style: none;
+}
+
+.requisito {
+    font-size: 20px;
+    background-color: rgb(53, 53, 238);
+    color: white;
+    margin-bottom: 5px;
+    padding: 15px;
+    cursor: pointer;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: all 0.25s;
+}
+
+.requisito::before{
+    content: "🔥 ";
+}
+
+.requisito:hover{
+    background-color: rgb(152, 14, 145);
+}
+
+.solicitar-button{
+    font-size: 25px;
+    padding: 15px;
+    color: white;
+    background: rgb(67, 67, 255);
+    outline: none;
+    border:  none;
+    border-radius: 5px;
+}
+
+.solicitar-button::before{
+    content: '🤑 ';
+}
+
+.solicitar-button:hover{
+    background-color: rgb(152, 14, 145);
+}
+
+.solicitar-button:active{
+    background-color: rgb(214, 187, 213);
+}
