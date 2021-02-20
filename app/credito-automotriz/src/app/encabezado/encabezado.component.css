@@ -1,0 +1,89 @@
+.banner{
+    background: url("../../assets/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    filter: blur(0.2px);
+    border: none;
+}
+
+.header{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.resaltado{
+    text-shadow: 1px 1px 0px rgb(0, 0, 0);
+    color: rgb(214, 42, 42);
+    font-weight: bold;
+    position: relative;
+}
+
+.title {
+    color: white;
+    font-size: 5em;
+    text-shadow: 1px 1px 3px rgb(8, 8, 8);
+    position: relative;
+}
+
+.subtitle{
+    color: white;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 1px 3px rgb(8, 8, 8);
+    position: relative;
+}
+
+.encabezado {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.537);
+    border-radius: 1px;
+    box-shadow: 0px 0px 4px -2px black;
+    background: rgb(24, 122, 220);
+    position: relative;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    padding: 10px;
+    height: 2.5em;
+}
+
+.menuItem{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    user-select: none;
+    transition:all 0.20s;
+}
+
+.menuItem:hover{
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.menuItem:active{
+    cursor: pointer;
+    color: rgb(0, 17, 27);
+    font-size: 25px;
+    text-shadow: 1px 1px 3px white;
+}
+
+.menuItem::first-letter{
+    color: white;
+    font-weight: 400;
+}
