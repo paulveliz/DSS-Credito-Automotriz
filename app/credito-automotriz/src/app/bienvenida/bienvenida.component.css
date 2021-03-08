@@ -96,6 +96,9 @@
     transition: all 4s;
 }
 
+.vehiculo p {
+    text-align: center;
+}
 .vehiculo h1 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;

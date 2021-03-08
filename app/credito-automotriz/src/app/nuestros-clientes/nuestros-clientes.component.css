@@ -14,9 +14,8 @@
 
 .lista-clientes{
     display: flex;
-    flex-direction: column;
-    flex-flow: row;
     justify-content: center;
+    flex-flow: row wrap;
 }
 
 .cliente{
@@ -32,13 +31,7 @@
     color: white;
     background: #9e0fb1;
     transition: all 1s;
-    filter: blur(5px);
 }
-
-.cliente:hover{
-    filter: blur(0px);
-}
-
 
 .cliente img{
     width: 250px;

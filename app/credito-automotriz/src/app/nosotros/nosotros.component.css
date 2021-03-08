@@ -1,0 +1,41 @@
+.encabezado{
+    background: rgba(0, 0, 0, 0.598);
+    width: 100%;
+}
+
+.encabezado h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px black;
+    font-size: 40px;
+    color: white;
+}
+
+.integrante img{
+    border-radius: 50%;
+    width: 100px;
+    height: 80px;
+}
+
+.lista-nosotros{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.integrante{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.integrante h1 {
+    font-weight: 500;
+}
+
+.integrante p {
+    font-weight: 300;
+}
