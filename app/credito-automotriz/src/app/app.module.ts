@@ -10,6 +10,7 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { SolicitarCreditoComponent } from './solicitar-credito/solicitar-credito.component';
 import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
 import { FooterComponent } from './footer/footer.component';
+import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-credito-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './footer/footer.component';
     NosotrosComponent,
     SolicitarCreditoComponent,
     NuestrosClientesComponent,
-    FooterComponent
+    FooterComponent,
+    SolicitaCreditoPageComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { Error404Component } from './error404/error404.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { SolicitarCreditoComponent } from './solicitar-credito/solicitar-credito.component';
 import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
+import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-credito-page.component';
 
 const routes: Routes = [
   { path: '', component: BienvenidaComponent, pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'solicitar', component: SolicitarCreditoComponent },
   { path: 'clientes', component: NuestrosClientesComponent },
+  { path: 'solicitar/solicita-page', component: SolicitaCreditoPageComponent },
   { path: '**', redirectTo: '404' },
 ];
 
