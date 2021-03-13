@@ -1,3 +1,4 @@
+using credito_automotriz.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,7 @@ namespace credito_automotriz
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<automotrizContext>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
