@@ -1,0 +1,146 @@
+.encabezado{
+    background: rgba(0, 0, 0, 0.598);
+    width: 100%;
+}
+
+.encabezado h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px black;
+    font-size: 40px;
+    color: white;
+}
+
+.formulario-titulo{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.115);
+    font-weight: 900;
+    text-align: center;
+}
+
+.formulario-titulo::before{
+    content: '✨';
+}
+.formulario-titulo::after{
+    content: '✨';
+}
+
+.formulario{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: min-content;
+    box-shadow: 0px 2px 5px 0px black;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.form-hijo{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.formulario .form-hijo input{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2px;
+    padding: 5px;
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 3px 0px black;
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+
+.formulario .form-hijo input:focus{
+    box-shadow: 1px 1px 3px 0px rgb(84, 64, 230);
+}
+
+.formulario .form-hijo label{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.formulario .form-hijo select{
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 3px 0px black;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    padding: 5px;
+    width: min-content;
+}
+
+.formulario .form-hijo select:hover{
+    box-shadow: 1px 1px 3px 0px rgb(84, 64, 230);
+}
+
+.formulario .form-hijo label[for="ingresosMensuales"]{
+    text-align: center;
+}
+
+.formulario .form-hijo input[type="number"]{
+    margin: 0 auto;
+    width: 10em;
+    text-align: left;
+}
+
+.formulario .form-hijo input[id="domicilio"]{
+    width: 20em;
+    text-align: left;
+}
+
+.formulario .form-hijo input[id="curp"]{
+    width: 20em;
+    text-align: left;
+}
+
+.formulario .form-hijo input[id="nombreCompleto"]{
+    width: 20em;
+    text-align: left;
+}
+
+.formulario .form-hijo input[id="fechaNacimiento"]{
+    width: 20em;
+    text-align: left;
+}
+
+.formulario button{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 25px;
+    padding: 15px;
+    color: white;
+    background: green;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px 0px black;
+    width: 10em;
+    height: 2.3em;
+    transition: all 1s;
+}
+
+.formulario button:hover{
+    box-shadow: 1px 1px 10px 3px black;
+    text-shadow: 1px 1px 3px black;
+}
+
+.formulario button:active{
+    transition: all 0s;
+    color: rgba(92, 118, 198, 0.387);
+}
