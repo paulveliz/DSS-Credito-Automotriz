@@ -4,7 +4,7 @@
 <div class="formulario">
     <div class="form-hijo">
         <label for="nombreCompleto">¿Cual es tu nombre?</label>
-        <input type="text" placeholder="Nombre completo" name="nombreCompleto" id="nombreCompleto">
+        <input maxlength="50" minlength="5" type="text" placeholder="Nombre completo" name="nombreCompleto" id="nombreCompleto">
     </div>
     <div class="form-hijo">
         <label for="fechaNacimiento">Fecha de nacimiento</label>
@@ -12,11 +12,11 @@
     </div>
     <div class="form-hijo">
         <label for="domicilio">¿Donde vives?</label>
-        <input type="text" placeholder="Domicilio actual" id="domicilio">
+        <input maxlength="50" type="text" placeholder="Domicilio actual" id="domicilio">
     </div>
     <div class="form-hijo">
         <label for="curp">¿Cual es tu CURP?</label>
-        <input type="text" placeholder="CURP" id="curp">
+        <input maxlength="18" type="text" placeholder="CURP" id="curp">
     </div>
     <div class="form-hijo">
         <label for="ingresosMensuales">¿Cuales son tus ingresos mensuales?</label>
@@ -29,5 +29,16 @@
             <option value="2">CASADO</option>
         </select>
     </div>
-        <button>Solicitar credito</button>
+    <div class="subida-imagen">
+        <button class="regresar-from-image-button" (click)="mostrarFormHijos(true)">Regresar</button>
+        <hr>
+        <label for="subir-imagen-button">Sube tu imagen de perfil</label>
+        <img id="image-input" src="../../assets/profile-unknown.png">
+        <input type="file" id="image-picker" accept="image/x-png,image/gif,image/jpeg" hidden>
+        <button class="subir-imagen-button" id="subir-imagen-button" (click)="seleccionarImagen()">
+            Subir imagen
+        </button>
+        <hr>
+    </div>
+    <button class="continue-button" id="step1button" (click)="continuarToStepTwo()" >Solicitar credito</button>
 </div>
