@@ -55,3 +55,8 @@
     padding: 0;
     margin-bottom: 5px;
 }
+
+.loading{
+    margin: 0 auto;
+    text-align: center;
+}

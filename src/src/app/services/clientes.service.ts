@@ -12,10 +12,13 @@ export class ClientesService {
   constructor(private http: HttpClient) {}
 
   ObtenerClientesExistentes(){
-    this.http.get('https://localhost:5001/api/clientes')
-    .subscribe((response: any) => {
-      console.log(response);
-      this.clientes = response;
+    return new Promise((resolve, reject) => {
+      this.http.get('https://localhost:5001/api/clientes')
+      .subscribe((response: any) => {
+        console.warn('fetching: todos los clientes.');
+        resolve(response);
+        this.clientes = response;
+      });
     });
   }
 

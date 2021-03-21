@@ -1,10 +1,12 @@
 <div class="encabezado">
     <h1>Clientes frecuentes</h1>
 </div>
-<div class="lista-clientes">
-    <div class="cliente" *ngFor="let cliente of clientes">
-        <img src="{{cliente.datos_generales.url_imagen}}" alt="">
-        <h1>{{cliente.datos_generales.nombre_completo}}</h1>
-        <p>Estudiante en la UAdeO</p>
+<div class="clientes-container">
+    <div class="lista-clientes">
+        <div class="cliente" *ngFor="let cliente of clientes">
+            <img src="{{cliente.datos_generales.url_imagen}}" alt="">
+            <h1>{{cliente.datos_generales.nombre_completo}}</h1>
+            <p>Estudiante en la UAdeO</p>
+        </div>
     </div>
 </div>
