@@ -11,6 +11,7 @@ import { SolicitarCreditoComponent } from './solicitar-credito/solicitar-credito
 import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes.component';
 import { FooterComponent } from './footer/footer.component';
 import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-credito-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-c
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
