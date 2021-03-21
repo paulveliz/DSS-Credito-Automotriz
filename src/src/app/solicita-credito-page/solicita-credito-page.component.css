@@ -36,11 +36,32 @@
     align-items: center;
     margin: 0 auto;
     width: min-content;
+    animation: grow0 1.5s forwards;
     box-shadow: 0px 2px 5px 0px black;
     padding: 10px;
     border-radius: 25px;
-    transition: all 4s ease-in-out;
+    transition: width 4s ease-in-out;
 }
+
+/*Animate width to 100%*/
+@keyframes grow0 {
+    from {
+      width: 10%;
+    }
+    to {
+      width: 70%;
+    }
+  }
+
+  /*Animate width to min content*/
+@keyframes grow1 {
+    from {
+      width: 10%;
+    }
+    to {
+      width: 70%;
+    }
+  }
 
 .form-hijo{
     display: flex;

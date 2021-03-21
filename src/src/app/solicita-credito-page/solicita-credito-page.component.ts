@@ -38,9 +38,7 @@ export class SolicitaCreditoPageComponent implements OnInit {
     const subidaImagenSection = document.querySelector('.subida-imagen');
     const formulario = document.querySelector('.formulario');
     this.renderer.setStyle(subidaImagenSection, 'display', `${(mostrar ? 'flex' : 'none')}`);
-    this.renderer.setStyle(formulario, 'width', `${(mostrar ? '70%' : 'min-content')}`)
-
-    this.mostrarFormHijos(!mostrar);
+    this.renderer.setStyle(formulario, 'animation', `${(mostrar ? 'grow1 1.5s forwards' : 'grow0 1.5s forwards')}`)
   }
 
   mostrarFormHijos(mostrar: Boolean): void{
