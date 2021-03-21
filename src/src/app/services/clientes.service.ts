@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class ClientesService {
 
   public clientes: any[] = [];
+  public response: Object = new Object;
+  public working: Boolean = false;
   constructor(private http: HttpClient) {}
 
   ObtenerClientesExistentes(){
@@ -14,6 +16,16 @@ export class ClientesService {
     .subscribe((response: any) => {
       console.log(response);
       this.clientes = response;
+    });
+  }
+
+  CrearNuevoCLiente(cliente: Object): void{
+    this.working = true;
+    this.http.post('https://localhost:5001/api/clientes/nuevo', cliente)
+    .subscribe( (response: any) => {
+      this.working = false;
+      this.response = response;
+      console.log(response);
     });
   }
 }

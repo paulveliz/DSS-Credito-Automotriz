@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ClientesService } from '../services/clientes.service';
 
 @Component({
   selector: 'app-solicita-credito-page',
@@ -10,7 +11,7 @@ export class SolicitaCreditoPageComponent implements OnInit {
 
   private paso: Boolean = false; // false: pagina1 == true: pagina2
 
-  constructor(private renderer: Renderer2, private http:HttpClient) { 
+  constructor(private renderer: Renderer2, private http:HttpClient, private clientesService:ClientesService) { 
   }
   
   ngOnInit(): void {
@@ -71,6 +72,12 @@ export class SolicitaCreditoPageComponent implements OnInit {
     return true;
   }
 
+  calcularEdad(fechaNacimiento: Date) { 
+    var diff_ms = Date.now() - fechaNacimiento.getTime();
+    var age_dt = new Date(diff_ms); 
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
+
   continuarToStepTwo(): void {
     const nombre = <HTMLInputElement>document.getElementById('nombreCompleto');
     const fechaNacimiento = <HTMLInputElement>document.getElementById('fechaNacimiento');
@@ -116,8 +123,26 @@ export class SolicitaCreditoPageComponent implements OnInit {
       return;
     }
     console.warn('Enviando informacion a la API.');
+    if(this.calcularEdad(new Date(fechaNacimiento.value)) < 18){
+      alert('Eres menor de edad, no puede proceder.');
+      return;
+    }
 
+    const imagenPerfil = <HTMLImageElement>document.querySelector('#image-input');
+    const estadoCivil = <HTMLSelectElement>document.querySelector('#estado-civil-selector');
 
+    this.clientesService.CrearNuevoCLiente(new Object({
+      nombreCompleto: nombre.value.trim(),
+      fechaNacimiento: fechaNacimiento.value,
+      domicilio: domicilio.value.trim(),
+      curp: curp.value.trim(),
+      ingresosMensuales: Number.parseFloat(ingresosMensuales.value),
+      urlImagen: imagenPerfil.src,
+      edad: this.calcularEdad(new Date(fechaNacimiento.value)),
+      idEstadoCivil: Number.parseInt(estadoCivil.options[estadoCivil.selectedIndex].value)
+    }));
+
+    console.log(this.clientesService.response);
   }
 
 }
