@@ -166,6 +166,8 @@
     transition: all 0s;
     color: rgba(92, 118, 198, 0.387);
 }
+
+
 /* SUBIR IMAGEN STYLES*/
 
 .subida-imagen{
@@ -230,4 +232,40 @@ hr{
 
 .subida-imagen .regresar-from-image-button::before{
     content: '💡';
+}
+
+/*SECTION HIJOS STYLES*/
+.formulario .section-hijos select{
+    font-size: 0.8em;
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 3px 0px black;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    padding: 5px;
+    width: min-content;
+}
+
+.formulario .section-hijos{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.formulario .section-hijos .add-hijos{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.formulario .section-hijos label{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.formulario .section-hijos .cantidad-hijos{
+    display: none;
 }

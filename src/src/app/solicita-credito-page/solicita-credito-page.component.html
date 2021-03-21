@@ -39,6 +39,30 @@
             Subir imagen
         </button>
         <hr>
+        <div class="section-hijos">
+            <label>¿Tienes hijos?
+                <select name="gotHijos" id="gotHijos">
+                    <option value="false">No</option>
+                    <option value="true">Si</option>
+                </select>
+            </label>
+            <div class="cantidad-hijos">
+                <label for="">¿Cuantos?
+                    <select name="cantHijos" id="cantHijos">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </label>
+            </div>
+        </div>
     </div>
     <button class="continue-button" id="step1button" (click)="continuarToStepTwo()" >Solicitar credito</button>
 </div>
