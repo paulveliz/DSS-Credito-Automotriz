@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ClienteResponse } from '../models/clienteResponse.interface';
 import { ClientesService } from '../services/clientes.service';
 
 @Component({
@@ -78,7 +79,7 @@ export class SolicitaCreditoPageComponent implements OnInit {
     return Math.abs(age_dt.getUTCFullYear() - 1970);
 }
 
-  continuarToStepTwo(): void {
+  async continuarToStepTwo(){
     const nombre = <HTMLInputElement>document.getElementById('nombreCompleto');
     const fechaNacimiento = <HTMLInputElement>document.getElementById('fechaNacimiento');
     const domicilio = <HTMLInputElement>document.getElementById('domicilio');
@@ -130,19 +131,37 @@ export class SolicitaCreditoPageComponent implements OnInit {
 
     const imagenPerfil = <HTMLImageElement>document.querySelector('#image-input');
     const estadoCivil = <HTMLSelectElement>document.querySelector('#estado-civil-selector');
+    const tieneHijos = (<HTMLSelectElement>document.querySelector('#gotHijos'));
+    const cantHijos = (<HTMLSelectElement>document.querySelector('#cantHijos'));
+    const tieneHijosResponse = tieneHijos.options[tieneHijos.selectedIndex].value;
 
-    this.clientesService.CrearNuevoCLiente(new Object({
-      nombreCompleto: nombre.value.trim(),
-      fechaNacimiento: fechaNacimiento.value,
-      domicilio: domicilio.value.trim(),
-      curp: curp.value.trim(),
-      ingresosMensuales: Number.parseFloat(ingresosMensuales.value),
-      urlImagen: imagenPerfil.src,
-      edad: this.calcularEdad(new Date(fechaNacimiento.value)),
-      idEstadoCivil: Number.parseInt(estadoCivil.options[estadoCivil.selectedIndex].value)
-    }));
-
-    console.log(this.clientesService.response);
+    // Generar hijos ficticios [testing]
+    let hijosList = new Array<Object>();
+    if(tieneHijosResponse == "true"){
+      let hijos = Number.parseInt(cantHijos.options[cantHijos.selectedIndex].value);
+      for (let i = 0; i < hijos; i++) {
+        hijosList.push(new Object({
+          NombreCompleto: `Hijo #${i} `,
+          FechaNacimiento: "03-13-2021",
+          Edad: 15,
+          Trabaja: false
+        }));
+      }
+    }
+    
+    // Peticion
+    const response = await this.clientesService.CrearNuevoCLiente(new Object({
+        nombreCompleto: nombre.value.trim(),
+        fechaNacimiento: fechaNacimiento.value,
+        domicilio: domicilio.value.trim(),
+        curp: curp.value.trim(),
+        ingresosMensuales: Number.parseFloat(ingresosMensuales.value),
+        urlImagen: imagenPerfil.src,
+        edad: this.calcularEdad(new Date(fechaNacimiento.value)),
+        idEstadoCivil: Number.parseInt(estadoCivil.options[estadoCivil.selectedIndex].value),
+        hijos: hijosList
+      }));
+      console.log(response);
   }
 
 }
