@@ -163,9 +163,9 @@ export class SolicitaCreditoPageComponent implements OnInit {
       }));
 
       if(response[0]){
-        console.log(response[1]);
-        console.log(response[2]);
-        console.log(response[3]);
+        
+      }else{
+        alert(`ERROR:\n${response[3]}\nVerifique la informacion e intente nuevamente`);
       }
   }
 
