@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClienteResponse } from '../models/clienteResponse.interface';
 import { ClientesService } from '../services/clientes.service';
 
@@ -12,7 +13,10 @@ export class SolicitaCreditoPageComponent implements OnInit {
 
   private paso: Boolean = false; // false: pagina1 == true: pagina2
 
-  constructor(private renderer: Renderer2, private http:HttpClient, private clientesService:ClientesService) { 
+  constructor(private renderer: Renderer2, 
+              private http:HttpClient, 
+              private clientesService:ClientesService,
+              private router:Router) { 
   }
   
   ngOnInit(): void {
@@ -163,7 +167,8 @@ export class SolicitaCreditoPageComponent implements OnInit {
       }));
 
       if(response[0]){
-        
+        const clienteRes = <ClienteResponse>response[1];
+        this.router.navigate([`nueva-solicitud/${clienteRes.datos_generales.id_cliente}`]);
       }else{
         alert(`ERROR:\n${response[3]}\nVerifique la informacion e intente nuevamente`);
       }

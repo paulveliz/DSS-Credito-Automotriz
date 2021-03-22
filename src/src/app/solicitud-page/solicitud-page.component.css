@@ -1,0 +1,83 @@
+.principal-titulo{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.115);
+    font-weight: 900;
+    text-align: center;
+}
+
+.principal-titulo::before{
+    content: '🎉';
+}
+.principal-titulo::after{
+    content: '🎊';
+}
+
+.principal{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: min-content;
+    animation: grow0 1.5s forwards;
+    box-shadow: 0px 2px 5px 0px black;
+    padding: 10px;
+    border-radius: 25px;
+    transition: width 4s ease-in-out;
+}
+
+@keyframes grow0 {
+    from {
+      width: 10%;
+    }
+    to {
+      width: 70%;
+    }
+  }
+
+.sugerido{
+    text-shadow: 1px 1px 2px blue;
+}
+
+.info-container{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.profile-image{
+    position: relative;
+}
+.profile-image::before{
+    content: '✨';
+    position: absolute;
+    right: 2.5em;
+    font-size: 4em;
+    text-shadow: 1px 1px 10px blueviolet;
+}
+.profile-image::after{
+    content: '✨';
+    position: absolute;
+    font-size: 4em;
+    text-shadow: 1px 1px 10px blueviolet;
+}
+
+.profile-image img{
+    box-shadow: 1px 1px 15px 0px blueviolet;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+}
+
+.title-big{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3em;
+    font-weight: 900;
+    text-align: center;
+}
