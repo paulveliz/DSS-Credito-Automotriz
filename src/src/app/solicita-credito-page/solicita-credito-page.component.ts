@@ -161,9 +161,12 @@ export class SolicitaCreditoPageComponent implements OnInit {
         idEstadoCivil: Number.parseInt(estadoCivil.options[estadoCivil.selectedIndex].value),
         hijos: hijosList
       }));
-      console.log(response[0]);
-      console.log(response[1]);
-      console.log(response[2]);
+
+      if(response[0]){
+        console.log(response[1]);
+        console.log(response[2]);
+        console.log(response[3]);
+      }
   }
 
 }

@@ -21,18 +21,18 @@ export class ClientesService {
     });
   }
 
-  CrearNuevoCLiente(cliente: Object): Promise<[isOk: Boolean, clienteResponse:ClienteResponse | null, code: Number]>{
-    console.warn('En el service!');
-
+  CrearNuevoCLiente(cliente: Object): Promise<[isOk: Boolean, clienteResponse:ClienteResponse | null, code: Number, msg: string]>{
+    
     return new Promise((resolve, reject) => {
       this.http.post<HttpResponse<ClienteResponse>>('https://localhost:5001/api/clientes/nuevo', cliente)
       .subscribe( 
-        (response: HttpResponse<ClienteResponse>) => {
+        (rsp: HttpResponse<ClienteResponse>) => {
+          console.log(rsp);
           console.warn('Peticion realizada: <CREAR NUEVO CLIENTE>');
-          return resolve([response.ok, response.body, response.status]);
+          return resolve([true, rsp.body, rsp.status, "ok"]);
         },
         (error: HttpErrorResponse) => {
-          return resolve([error.ok, null, error.status]);
+          return resolve([error.ok, null, error.status, error.error.msg]);
         }
       )
     });
