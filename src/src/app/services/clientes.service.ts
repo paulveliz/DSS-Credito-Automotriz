@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ClienteResponse } from '../models/clienteResponse.interface';
 
@@ -21,15 +21,20 @@ export class ClientesService {
     });
   }
 
-  CrearNuevoCLiente(cliente: Object): Promise<ClienteResponse>{
+  CrearNuevoCLiente(cliente: Object): Promise<[isOk: Boolean, clienteResponse:ClienteResponse | null, code: Number]>{
     console.warn('En el service!');
 
     return new Promise((resolve, reject) => {
-      this.http.post<ClienteResponse>('https://localhost:5001/api/clientes/nuevo', cliente)
-      .subscribe( (response: ClienteResponse) => {
-        console.warn('Peticion realizada: <CREAR NUEVO CLIENTE>');
-        resolve(response);
-      })
+      this.http.post<HttpResponse<ClienteResponse>>('https://localhost:5001/api/clientes/nuevo', cliente)
+      .subscribe( 
+        (response: HttpResponse<ClienteResponse>) => {
+          console.warn('Peticion realizada: <CREAR NUEVO CLIENTE>');
+          return resolve([response.ok, response.body, response.status]);
+        },
+        (error: HttpErrorResponse) => {
+          return resolve([error.ok, null, error.status]);
+        }
+      )
     });
 
   }
