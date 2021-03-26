@@ -81,3 +81,71 @@
     font-weight: 900;
     text-align: center;
 }
+
+.info-sugerido{
+    width: 30em;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px 0px black;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+}
+
+.info-sugerido h1{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: brown;
+}
+
+.info-sugerido h2{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: green;
+}
+
+.info-sugerido p{
+    padding: 5px;
+    text-align: justify;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+.info-sugerido button{
+    padding: 10px;
+    color: white;
+    background: rgb(57, 95, 233);
+    font-size: 1.5em;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 0px black;
+}
+
+.info-sugerido button:hover{
+    text-shadow: 1px 1px 10px pink;
+}
+
+.info-sugerido button::before{
+    content: '🔑';
+    padding: 5px;
+}
+
+.info-sugerido button::after{
+    content: '🚗';
+    padding: 5px;
+}
+
+.info-sugerido button:active{
+    color: black;
+}
+
+
+

@@ -1,6 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ClienteResponse } from '../models/clienteResponse.interface';
+import { PlanResponse } from '../models/planResponse.interface';
+import { SolicitudResponse } from '../models/solicitudResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,25 @@ export class ClientesService {
 
   public clientes: any[] = [];
   public cliente: any;
+  public solicitud: any;
+  public plan: any;
+
   constructor(private http: HttpClient) {
-    
+  }
+
+  ObtenerPlanPorId(planId:Number){
+    this.http.get<PlanResponse>(`https://localhost:5001/api/planes/${planId}`)
+      .subscribe( (response:PlanResponse)  => {
+        this.plan = response;
+      })
+  }
+
+  ObtenerSolicitudDeCliente(clienteId:Number){
+    this.http.post<SolicitudResponse>(`https://localhost:5001/api/solicitudes/cliente/${clienteId}`, {})
+      .subscribe( (response:SolicitudResponse) => {
+        this.solicitud = response;
+        // this.solicitud.resultados.plan_sugerido.descripcion
+      });
   }
 
   ObtenerClientePorId(clienteId:Number){
