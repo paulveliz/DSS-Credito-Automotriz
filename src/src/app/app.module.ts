@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-credito-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SolicitudPageComponent } from './solicitud-page/solicitud-page.component';
+import { FinanciarPageComponent } from './financiar-page/financiar-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SolicitudPageComponent } from './solicitud-page/solicitud-page.componen
     NuestrosClientesComponent,
     FooterComponent,
     SolicitaCreditoPageComponent,
-    SolicitudPageComponent
+    SolicitudPageComponent,
+    FinanciarPageComponent
   ],
   imports: [
     BrowserModule,

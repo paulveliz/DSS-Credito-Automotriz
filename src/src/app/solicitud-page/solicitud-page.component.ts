@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteResponse } from '../models/clienteResponse.interface';
 import { PlanResponse } from '../models/planResponse.interface';
 import { SolicitudResponse } from '../models/solicitudResponse.interface';
@@ -12,7 +12,9 @@ import { ClientesService } from '../services/clientes.service';
 })
 export class SolicitudPageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private clientesServie:ClientesService) {
+  constructor(private route: ActivatedRoute, 
+              private clientesServie:ClientesService,
+              private router:Router) {
 
    }
 
@@ -28,10 +30,7 @@ export class SolicitudPageComponent implements OnInit {
   public get planSugerido() : PlanResponse{
     return this.clientesServie.plan;
   }
-
   
-  
-
   ngOnInit(): void {
     this.route.params.subscribe( params => {
       // TODO: Implementar JWT
@@ -42,6 +41,14 @@ export class SolicitudPageComponent implements OnInit {
         this.clientesServie.solicitud = sl;
       });
     });
+  }
+
+  financiarAutomovil(){
+    if(this.cliente && this.planSugerido){
+      this.router.navigate([`financiar/cliente/${this.cliente.datos_generales.id_cliente}/plan/${this.planSugerido.id_plan}`]);
+    }else{
+      alert('No se ha detectado un cliente y un plan.');
+    }
   }
 
 }
