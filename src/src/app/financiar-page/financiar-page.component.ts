@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AutosPorPlanResponse } from '../models/autosPorPlanResponse.interface';
+import { AutomovilesService } from '../services/automoviles.service';
 
 @Component({
   selector: 'app-financiar-page',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanciarPageComponent implements OnInit {
 
-  constructor() { }
+  public autosPorPlan: any;
+  
+
+  constructor(private route:ActivatedRoute,
+              private financiar:AutomovilesService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe( params => {
+      // Params: clienteId, planId
+      this.financiar.ObtenerAutosPorPlan(params.planId).subscribe( autos => {
+        this.autosPorPlan = autos;
+      });
+
+    });
   }
 
 }

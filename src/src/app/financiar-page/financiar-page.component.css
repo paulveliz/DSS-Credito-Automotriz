@@ -1,0 +1,89 @@
+.automoviles{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.automovil{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 10px;
+    box-shadow: 1px 1px 5px 0px black;
+    border-radius: 2px;
+    transition: all 0.5s;
+    background: rgba(126, 90, 245, 0.204);
+}
+
+.automovil .auto-image{
+    border-radius: 2px;
+    height: 21em;
+    width: 32em;
+}
+
+.automovil:hover{
+    box-shadow: 1px 1px 5px 0px rgb(221, 206, 235);
+}
+
+.automovil .nombre-auto{
+    font-size: 2.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(39, 39, 226);
+    text-shadow: 1px 1px 0.5px black;
+    display: block;
+    text-align: center;
+    max-lines: 1;
+    text-overflow: ellipsis;
+    margin: 5px;
+}
+
+.automovil .marca-auto{
+    height: 5em;
+    width: 7em;
+    display: block;
+    margin: 0 auto;
+}
+
+.automovil .precio-auto{
+    display: block;
+    text-align: center;
+    color: brown;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.1em;
+    margin-bottom: 8px;
+}
+
+.automovil .financiar-button{
+    margin: 0 auto;
+    display: block;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgb(35, 87, 220);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+}
+
+.automovil .financiar-button:hover{
+    text-shadow: 1px 1px 2px black;
+    background-color: rgb(83, 124, 228);
+
+}
+
+.automovil .financiar-button:active{
+    text-shadow: 1px 1px 2px rgb(221, 5, 5);
+    background-color: rgb(83, 124, 228);
+    color: black;
+}
+
+.automovil .financiar-button::before{
+    content: '🥇 ';
+}
+
+.automovil .financiar-button::after{
+    content: ' 🥇 ';
+}
+

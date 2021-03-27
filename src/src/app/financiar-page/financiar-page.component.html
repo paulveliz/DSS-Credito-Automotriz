@@ -1,1 +1,33 @@
-<p>financiar-page works!</p>
+<div class="automoviles">
+    <div class="automovil" *ngFor = "let auto of autosPorPlan">
+        <img class="auto-image" src="{{auto.url_imagen}}">
+        <p>
+            <img class="marca-auto" src="{{auto.marca.url_imagen}}"/>
+            <span class="nombre-auto">{{auto.modelo.nombre}}</span>
+            <span class="precio-auto">Desde ${{auto.valor_comercial}}</span>
+            <button class="financiar-button">Financiar automovil</button>
+        </p>
+    </div>
+</div>
+
+
+<!-- {
+    "id_auto": 1,
+    "valor_comercial": 163000.00,
+    "url_imagen": "https://realcartest.com/wp-content/uploads/2019/02/Toyota-yaris-s-2019-2.jpg",
+    "marca": {
+        "id_marca": 1,
+        "nombre": "TOYOTA",
+        "url_imagen": "https://img1.cgtrader.com/items/773133/3844c514ab/toyota-logo-3d-model-obj-mtl-3ds-fbx-c4d-lwo-lw-lws-ma-mb.jpg"
+    },
+    "modelo": {
+        "id_modelo": 1,
+        "nombre": "YARIS 1.5 S"
+    },
+    "plan_financiamiento": {
+        "id_plan": 1,
+        "descripcion": "Todos pueden",
+        "precio_inicial": 0.00,
+        "precio_limite": 220000.00
+    }
+}, -->
