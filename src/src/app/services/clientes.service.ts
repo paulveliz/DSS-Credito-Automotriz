@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ClienteResponse } from '../models/clienteResponse.interface';
 import { PlanResponse } from '../models/planResponse.interface';
 import { SolicitudResponse } from '../models/solicitudResponse.interface';
@@ -24,12 +25,12 @@ export class ClientesService {
       })
   }
 
-  ObtenerSolicitudDeCliente(clienteId:Number){
-    this.http.post<SolicitudResponse>(`https://localhost:5001/api/solicitudes/cliente/${clienteId}`, {})
-      .subscribe( (response:SolicitudResponse) => {
-        this.solicitud = response;
-        // this.solicitud.resultados.plan_sugerido.descripcion
-      });
+  ObtenerSolicitudDeCliente(clienteId:Number): Observable<SolicitudResponse>{
+    return this.http.post<SolicitudResponse>(`https://localhost:5001/api/solicitudes/cliente/${clienteId}`, {});
+      // .subscribe( (response:SolicitudResponse) => {
+      //   this.solicitud = response;
+      //   // this.solicitud.resultados.plan_sugerido.descripcion
+      // });
   }
 
   ObtenerClientePorId(clienteId:Number){

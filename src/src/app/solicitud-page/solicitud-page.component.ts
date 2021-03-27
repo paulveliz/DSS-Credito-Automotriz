@@ -12,12 +12,12 @@ import { ClientesService } from '../services/clientes.service';
 })
 export class SolicitudPageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private clientesServie:ClientesService) { }
+  constructor(private route: ActivatedRoute, private clientesServie:ClientesService) {
 
-  
+   }
+
   public get cliente() : ClienteResponse {
-    const cl = <ClienteResponse>this.clientesServie.cliente;
-    return cl;
+    return this.clientesServie.cliente;
   }
 
   
@@ -26,7 +26,6 @@ export class SolicitudPageComponent implements OnInit {
   }
 
   public get planSugerido() : PlanResponse{
-    this.clientesServie.ObtenerPlanPorId(this.solicitud.resultados.plan_sugerido.id_plan);
     return this.clientesServie.plan;
   }
 
@@ -37,7 +36,11 @@ export class SolicitudPageComponent implements OnInit {
     this.route.params.subscribe( params => {
       // TODO: Implementar JWT
       this.clientesServie.ObtenerClientePorId(Number.parseInt(params.clienteId));
-      this.clientesServie.ObtenerSolicitudDeCliente(Number.parseInt(params.clienteId));
+      this.clientesServie.ObtenerSolicitudDeCliente(Number.parseInt(params.clienteId))
+      .subscribe( sl => {
+        this.clientesServie.ObtenerPlanPorId(sl.resultados.plan_sugerido.id_plan);
+        this.clientesServie.solicitud = sl;
+      });
     });
   }
 
