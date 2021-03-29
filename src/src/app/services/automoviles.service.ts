@@ -15,7 +15,7 @@ export class AutomovilesService {
    }
 
   FinanciarAutomovil(automovilId:Number): Observable<FinanciarResponse>{
-    return this.http.post<FinanciarResponse>(`https://localhost:5001/api/solicitudes/financiar`, {
+    return this.http.post<FinanciarResponse>(`https://automotriz-webapi.azurewebsites.net/api/solicitudes/financiar`, {
       id_automovil: automovilId,
       id_plan: 0,
       meses: 60
@@ -24,7 +24,7 @@ export class AutomovilesService {
 
   ObtenerAutosPorPlan(planId:Number): Observable<AutosPorPlanResponse>{
     // https://localhost:5001/api/planes/1/autos
-    return this.http.get<AutosPorPlanResponse>(`https://localhost:5001/api/planes/${planId}/autos`);
+    return this.http.get<AutosPorPlanResponse>(`https://automotriz-webapi.azurewebsites.net/api/planes/${planId}/autos`);
   }
 
 }
