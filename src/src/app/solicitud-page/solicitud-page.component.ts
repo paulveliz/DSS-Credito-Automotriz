@@ -12,34 +12,31 @@ import { ClientesService } from '../services/clientes.service';
 })
 export class SolicitudPageComponent implements OnInit {
 
+  public solicitud: any;
+  public cliente: any;
+  public planSugerido: any;
+
   constructor(private route: ActivatedRoute, 
               private clientesServie:ClientesService,
               private router:Router) {
 
    }
-
-  public get cliente() : ClienteResponse {
-    return this.clientesServie.cliente;
-  }
-
-  
-  public get solicitud() : SolicitudResponse{
-    return this.clientesServie.solicitud;
-  }
-
-  public get planSugerido() : PlanResponse{
-    return this.clientesServie.plan;
-  }
   
   ngOnInit(): void {
     this.route.params.subscribe( params => {
       // TODO: Implementar JWT
-      this.clientesServie.ObtenerClientePorId(Number.parseInt(params.clienteId));
-      this.clientesServie.ObtenerSolicitudDeCliente(Number.parseInt(params.clienteId))
-      .subscribe( sl => {
-        this.clientesServie.ObtenerPlanPorId(sl.resultados.plan_sugerido.id_plan);
-        this.clientesServie.solicitud = sl;
-      });
+          this.clientesServie.ObtenerClientePorId(Number.parseInt(params.clienteId))
+                              .subscribe(clienteResponse => {
+                                this.cliente = clienteResponse;
+          this.clientesServie.ObtenerSolicitudDeCliente(Number.parseInt(params.clienteId))
+                                .subscribe( sl => {
+                                  this.solicitud = sl;
+          this.clientesServie.ObtenerPlanPorId(sl.resultados.plan_sugerido.id_plan)
+                                .subscribe(planResponse => {
+                                  this.planSugerido = planResponse;
+                                });
+            });
+        });
     });
   }
 

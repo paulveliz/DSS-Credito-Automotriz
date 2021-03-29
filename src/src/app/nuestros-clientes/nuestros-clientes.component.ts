@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ClienteResponse } from '../models/clienteResponse.interface';
 import { ClientesService } from '../services/clientes.service';
 
 @Component({
@@ -8,9 +9,7 @@ import { ClientesService } from '../services/clientes.service';
 })
 export class NuestrosClientesComponent implements OnInit {
 
-  get clientes(){
-    return this.clientesService.clientes;
-  }
+  public clientes: ClienteResponse[] = [];
 
   makeLoader(): void{
     let clientesContainer = <HTMLDivElement>document.querySelector('.clientes-container');
@@ -30,11 +29,14 @@ export class NuestrosClientesComponent implements OnInit {
   }
   constructor( private clientesService: ClientesService, private renderer:Renderer2) { }
 
-  async ngOnInit() {
+  ngOnInit(): void {
     this.makeLoader();
     this.isLoading(true);
-    await this.clientesService.ObtenerClientesExistentes();
-    this.isLoading(false);
+    this.clientesService.ObtenerClientesExistentes()
+                    .subscribe( response => {
+                      this.isLoading(false);
+                      this.clientes = response;
+                    });
   }
 
 }

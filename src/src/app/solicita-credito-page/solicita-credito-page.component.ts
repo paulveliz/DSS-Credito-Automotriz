@@ -154,7 +154,7 @@ export class SolicitaCreditoPageComponent implements OnInit {
     }
     
     // Peticion
-    const response = await this.clientesService.CrearNuevoCLiente(new Object({
+    this.clientesService.CrearNuevoCLiente(new Object({
         nombreCompleto: nombre.value.trim(),
         fechaNacimiento: fechaNacimiento.value,
         domicilio: domicilio.value.trim(),
@@ -164,14 +164,14 @@ export class SolicitaCreditoPageComponent implements OnInit {
         edad: this.calcularEdad(new Date(fechaNacimiento.value)),
         idEstadoCivil: Number.parseInt(estadoCivil.options[estadoCivil.selectedIndex].value),
         hijos: hijosList
-      }));
+      })).subscribe(response => {
+        if(response){
+          this.router.navigate([`nueva-solicitud/${response.datos_generales.id_cliente}`]);
+        }else{
+          alert(`ERROR\nVerifique la informacion e intente nuevamente`);
+        }
+      });
 
-      if(response[0]){
-        const clienteRes = <ClienteResponse>response[1];
-        this.router.navigate([`nueva-solicitud/${clienteRes.datos_generales.id_cliente}`]);
-      }else{
-        alert(`ERROR:\n${response[3]}\nVerifique la informacion e intente nuevamente`);
-      }
   }
 
 }
