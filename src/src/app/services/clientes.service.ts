@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClienteResponse } from '../models/clienteResponse.interface';
@@ -10,11 +10,15 @@ import { SolicitudResponse } from '../models/solicitudResponse.interface';
 })
 export class ClientesService {
 
+  headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+
   constructor(private http: HttpClient) {
   }
 
   ObtenerPlanPorId(planId:Number){
-    return this.http.get<PlanResponse>(`https://automotriz-webapi.azurewebsites.net/api/planes/${planId}`);
+    return this.http.get<PlanResponse>(`https://automotriz-webapi.azurewebsites.net/api/planes/${planId}`,{
+      headers: this.headers 
+    });
   }
 
   ObtenerSolicitudDeCliente(clienteId:Number): Observable<SolicitudResponse>{
@@ -30,7 +34,9 @@ export class ClientesService {
   }
   // TODO REFACTOR
   ObtenerClientesExistentes():Observable<ClienteResponse[]>{
-    return this.http.get<ClienteResponse[]>('https://automotriz-webapi.azurewebsites.net/api/clientes');
+    return this.http.get<ClienteResponse[]>('https://automotriz-webapi.azurewebsites.net/api/clientes', {
+      headers: this.headers
+    });
   }
 
   // TODO REFACTOR
