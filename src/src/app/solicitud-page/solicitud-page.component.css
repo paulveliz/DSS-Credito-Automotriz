@@ -147,5 +147,7 @@
     color: black;
 }
 
-
-
+.loading{
+    margin: 0 auto;
+    text-align: center;
+}

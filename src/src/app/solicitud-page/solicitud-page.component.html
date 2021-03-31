@@ -1,21 +1,26 @@
-<div class="principal">
-    <div class="principal-titulo">¡BIENVENIDO A LA FAMILIA!</div>
-    <div class="profile-image">
-        <img src="{{cliente != null ? cliente.datos_generales.url_imagen : '../assets/loading.gif'}}">
+<div class="path">
+
+
+    <div class="principal">
+        <div class="principal-titulo">¡BIENVENIDO A LA FAMILIA!</div>
+        <div class="profile-image">
+            <img src="{{cliente != null ? cliente.datos_generales.url_imagen : '../assets/loading.gif'}}">
+        </div>
+        <div class="info-container">
+            ¡Hola <b>{{ cliente != null ? cliente.datos_generales.nombre_completo : '...'}}</b> hemos hecho algunos <b>calculos</b> y hemos encontrado un <span class="sugerido"> PAQUETE SUGERIDO </span>
+            que se ajusta a tu presupuesto!
+        </div>
+        <h1 class="title-big" >RESULTADOS</h1>
+        <div class="info-sugerido">
+            <h2>¡Felicidades!</h2>
+            <h1>Plan {{ solicitud != null ? solicitud.resultados.plan_sugerido.descripcion : '...' }}</h1>
+            <p>
+                En este <b>Plan sugerido</b> puedes encontrar hasta <b>{{planSugerido?.autos?.length}}</b> 
+                Automoviles diferentes y puedes financiar cualquiera de ellos sin problemas,
+                y tambien puedes elegir otro plan que sea menor al que se te ha sugerido.
+            </p>
+            <button (click)="financiarAutomovil()">¡FINANCIAR UN AUTOMOVIL!</button>
+        </div>
     </div>
-    <div class="info-container">
-        ¡Hola <b>{{ cliente != null ? cliente.datos_generales.nombre_completo : '...'}}</b> hemos hecho algunos <b>calculos</b> y hemos encontrado un <span class="sugerido"> PAQUETE SUGERIDO </span>
-        que se ajusta a tu presupuesto!
-    </div>
-    <h1 class="title-big" >RESULTADOS</h1>
-    <div class="info-sugerido">
-        <h2>¡Felicidades!</h2>
-        <h1>Plan {{ solicitud != null ? solicitud.resultados.plan_sugerido.descripcion : '...' }}</h1>
-        <p>
-            En este <b>Plan sugerido</b> puedes encontrar hasta <b>{{planSugerido?.autos?.length}}</b> 
-            Automoviles diferentes y puedes financiar cualquiera de ellos sin problemas,
-            y tambien puedes elegir otro plan que sea menor al que se te ha sugerido.
-        </p>
-        <button (click)="financiarAutomovil()">¡FINANCIAR UN AUTOMOVIL!</button>
-    </div>
+
 </div>
