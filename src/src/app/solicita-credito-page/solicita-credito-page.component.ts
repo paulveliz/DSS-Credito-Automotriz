@@ -47,6 +47,12 @@ export class SolicitaCreditoPageComponent implements OnInit {
     });
   }
 
+  buttonState(isLoading: boolean): void{
+    const button = <HTMLButtonElement>document.querySelector('#step1button');
+    button.textContent = (isLoading) ? 'Cargando...' : 'Solicitar credito';
+    button.disabled = (isLoading) ? true : false;
+  }
+
   mostrarSeleccionImagen(mostrar: Boolean): void{
     const subidaImagenSection = document.querySelector('.subida-imagen');
     const formulario = document.querySelector('.formulario');
@@ -152,7 +158,7 @@ export class SolicitaCreditoPageComponent implements OnInit {
         }));
       }
     }
-    
+    this.buttonState(true);
     // Peticion
     this.clientesService.CrearNuevoCLiente(new Object({
         nombreCompleto: nombre.value.trim(),
@@ -165,6 +171,7 @@ export class SolicitaCreditoPageComponent implements OnInit {
         idEstadoCivil: Number.parseInt(estadoCivil.options[estadoCivil.selectedIndex].value),
         hijos: hijosList
       })).subscribe(response => {
+        this.buttonState(false);
         if(response){
           this.router.navigate([`nueva-solicitud/${response.datos_generales.id_cliente}`]);
         }else{

@@ -16,13 +16,13 @@ export class ClientesService {
   }
 
   ObtenerPlanPorId(planId:Number){
-    return this.http.get<PlanResponse>(`https://automotriz-webapi.azurewebsites.net/api/planes/${planId}`,{
+    return this.http.get<PlanResponse>(`https://localhost:5001/api/planes/${planId}`,{
       headers: this.headers 
     });
   }
 
   ObtenerSolicitudDeCliente(clienteId:Number): Observable<SolicitudResponse>{
-    return this.http.post<SolicitudResponse>(`https://automotriz-webapi.azurewebsites.net/api/solicitudes/cliente/${clienteId}`, {});
+    return this.http.post<SolicitudResponse>(`https://localhost:5001/api/solicitudes/cliente/${clienteId}`, {});
       // .subscribe( (response:SolicitudResponse) => {
       //   this.solicitud = response;
       //   // this.solicitud.resultados.plan_sugerido.descripcion
@@ -30,17 +30,17 @@ export class ClientesService {
   }
 
   ObtenerClientePorId(clienteId:Number):Observable<ClienteResponse>{
-    return this.http.get<ClienteResponse>(`https://automotriz-webapi.azurewebsites.net/api/clientes/${clienteId}`);
+    return this.http.get<ClienteResponse>(`https://localhost:5001/api/clientes/${clienteId}`);
   }
   // TODO REFACTOR
   ObtenerClientesExistentes():Observable<ClienteResponse[]>{
-    return this.http.get<ClienteResponse[]>('https://automotriz-webapi.azurewebsites.net/api/clientes', {
+    return this.http.get<ClienteResponse[]>('https://localhost:5001/api/clientes', {
       headers: this.headers
     });
   }
 
   // TODO REFACTOR
   CrearNuevoCLiente(cliente: Object):Observable<ClienteResponse>{
-    return this.http.post<ClienteResponse>('https://automotriz-webapi.azurewebsites.net/api/clientes/nuevo', cliente);
+    return this.http.post<ClienteResponse>('https://localhost:5001/api/clientes/nuevo', cliente);
   }
 }
