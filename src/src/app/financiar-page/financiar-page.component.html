@@ -1,15 +1,17 @@
-<div class="encabezado">
-    <h1>¡Elije tu automovil!</h1>
-</div>
-<div class="automoviles">
-    <div class="automovil" *ngFor = "let auto of autosPorPlan">
-        <img class="auto-image" src="{{auto.url_imagen}}">
-        <p>
-            <img class="marca-auto" src="{{auto.marca.url_imagen}}"/>
-            <span class="nombre-auto">{{auto.modelo.nombre}}</span>
-            <span class="precio-auto">Desde ${{auto.valor_comercial}}</span>
-            <button class="financiar-button">Financiar automovil</button>
-        </p>
+<div class="path">
+    <div class="encabezado">
+        <h1>¡Elije tu automovil!</h1>
+    </div>
+    <div class="automoviles">
+        <div class="automovil" *ngFor = "let auto of autosPorPlan">
+            <img class="auto-image" src="{{auto.url_imagen}}">
+            <p>
+                <img class="marca-auto" src="{{auto.marca.url_imagen}}"/>
+                <span class="nombre-auto">{{auto.modelo.nombre}}</span>
+                <span class="precio-auto">Desde ${{auto.valor_comercial}}</span>
+                <button class="financiar-button">Financiar automovil</button>
+            </p>
+        </div>
     </div>
 </div>
 
