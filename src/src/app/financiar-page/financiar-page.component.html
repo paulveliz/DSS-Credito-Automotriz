@@ -2,6 +2,28 @@
     <div class="encabezado">
         <h1>¡Elije tu automovil!</h1>
     </div>
+    <div class="filters">
+        <div class="order-by">
+            <p>Buscar por:</p>
+            <label for="plan">
+                Plan:
+                <select name="plan" id="plan">
+                    <option value="Example">Example</option>
+                    <option value="Example">Example</option>
+                    <option value="Example">Example</option>
+                </select>
+            </label>
+            <label for="Marca">
+                Marca:
+                <select name="Marca" id="Marca">
+                    <option value="Example">Example</option>
+                    <option value="Example">Example</option>
+                    <option value="Example">Example</option>
+                </select>
+            </label>
+            <button>Buscar</button>
+        </div>
+    </div>
     <div class="automoviles">
         <div class="automovil" *ngFor = "let auto of autosPorPlan">
             <img class="auto-image" src="{{auto.url_imagen}}">
