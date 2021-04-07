@@ -186,7 +186,6 @@
 
 .contenido{
     width: 400px;
-    height: 300px;
     margin: auto;
     background: #fff;
     box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.612);
@@ -219,4 +218,51 @@
 .contenido label:active{
     color: black;
     text-shadow: 1px 1px 4px black;
+}
+
+.modal .contenido p{
+    padding: 25px;
+    text-align: justify;
+    margin: 0;
+}
+
+.modal .contenido p span{
+    color: black;
+    text-shadow: 0px 0px 1px black;
+}
+
+.image-content{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.modal .contenido img{
+    margin-top: 5px;
+    text-align: center;
+    align-self: center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.modal .contenido button{
+    background: rgba(47, 47, 236, 0.666);
+    color: white;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    box-shadow: 0px 0px 1px 0px black;
+}
+
+.modal .contenido button:hover{
+    box-shadow: 0px 0px 5px 0px black;
+}
+
+.modal .contenido button:active{
+    color: black;
+    box-shadow: 0px 0px 3px 1px black;
 }
