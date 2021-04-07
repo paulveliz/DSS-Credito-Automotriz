@@ -48,7 +48,7 @@
                 Con un enganche de <span>${{selectedAutoFinanciamiento.enganche}}</span> podras llevarte este vehiculo a solo <span>${{selectedAutoFinanciamiento.cantidad_a_financiar}}</span>
                 a <span>{{selectedAutoFinanciamiento.meses}}</span> meses con mensualidades desde <span>${{selectedAutoFinanciamiento.mensualidad}}</span>
              </p>
-             <button>COMPRAR</button>
+             <button (click)="comprarAutomovil(selectedAuto)" >COMPRAR</button>
         </div>
     </div>
     <ng-template #isNull>

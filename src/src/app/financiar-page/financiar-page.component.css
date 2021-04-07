@@ -35,7 +35,7 @@
     border-radius: 2px;
     transition: all 0.5s;
     background: rgba(126, 90, 245, 0.204);
-    /* width: 32em; */
+    width: 32em;
 }
 
 @media (max-width: 510px) {

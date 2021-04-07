@@ -46,7 +46,6 @@ export class FinanciarPageComponent implements OnInit {
   }
 
   financiarAuto(auto:Automovil): void {
-    console.log(auto.modelo.nombre);
     this.isLoading(true);
     this.financiar.FinanciarAutomovil(auto).subscribe( response => {
       console.table(response);
@@ -69,6 +68,10 @@ export class FinanciarPageComponent implements OnInit {
       });
 
     });
+  }
+
+  comprarAutomovil(automovil:Automovil):void{
+    console.log(`Comprando ${automovil.modelo.nombre}`);
   }
 
 }
