@@ -31,12 +31,35 @@
                 <img class="marca-auto" src="{{auto.marca.url_imagen}}"/>
                 <span class="nombre-auto">{{auto.modelo.nombre}}</span>
                 <span class="precio-auto">Desde ${{auto.valor_comercial}}</span>
-                <button class="financiar-button">Financiar automovil</button>
+                <button class="financiar-button" (click)="financiarAuto(auto)">Financiar automovil</button>
             </p>
         </div>
     </div>
 </div>
 
+<div class="modal">
+    <div class="contenido"*ngIf="selectedAuto && selectedAutoFinanciamiento; else isNull">
+        <label (click)="openModal(false)">X</label>
+        <header>{{selectedAuto != null ? selectedAuto?.modelo.nombre : '...'}}</header>
+        <p>
+            El vehiculo {{selectedAuto.marca.nombre}} {{selectedAuto.modelo.nombre}} cuenta con un costo desde los <span>${{selectedAuto?.valor_comercial}}</span>
+            Con un enganche de ${{selectedAutoFinanciamiento.enganche}} podras llevarte este vehiculo a solo ${{selectedAutoFinanciamiento.cantidad_a_financiar}}
+            a {{selectedAutoFinanciamiento.meses}} meses con mensualidades desde ${{selectedAutoFinanciamiento.mensualidad}}
+         </p>
+    </div>
+    <ng-template #isNull>
+        <label>X</label>
+        <header>Sin datos</header>
+    </ng-template>
+</div>
+
+<!-- {
+    "valor_del_auto": 163000.00,
+    "enganche": 32600.00,
+    "cantidad_a_financiar": 176040.00,
+    "meses": 60,
+    "mensualidad": 2934.00
+} -->
 
 <!-- {
     "id_auto": 1,

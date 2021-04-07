@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Automovil } from '../interfaces/automovil.interface';
 import { AutosPorPlanResponse } from '../models/autosPorPlanResponse.interface';
 import { FinanciarResponse } from '../models/financiarResponse.interface';
 
@@ -15,10 +16,10 @@ export class AutomovilesService {
   constructor(private http:HttpClient) {
    }
 
-  FinanciarAutomovil(automovilId:Number): Observable<FinanciarResponse>{
+  FinanciarAutomovil(automovil:Automovil): Observable<FinanciarResponse>{
     return this.http.post<FinanciarResponse>(`${environment.apiUrl}/api/solicitudes/financiar`, {
-      id_automovil: automovilId,
-      id_plan: 0,
+      id_automovil: automovil.id_auto,
+      id_plan: automovil.plan_financiamiento.id_plan,
       meses: 60
     });
   }

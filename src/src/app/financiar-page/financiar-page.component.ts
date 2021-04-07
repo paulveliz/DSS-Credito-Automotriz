@@ -1,6 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Automovil } from '../interfaces/automovil.interface';
 import { AutosPorPlanResponse } from '../models/autosPorPlanResponse.interface';
+import { FinanciarResponse } from '../models/financiarResponse.interface';
 import { AutomovilesService } from '../services/automoviles.service';
 
 @Component({
@@ -11,10 +13,14 @@ import { AutomovilesService } from '../services/automoviles.service';
 export class FinanciarPageComponent implements OnInit {
 
   public autosPorPlan: any;
+  public selectedAuto:Automovil | any;
+  public selectedAutoFinanciamiento:FinanciarResponse | any;
 
   constructor(private route:ActivatedRoute,
               private financiar:AutomovilesService,
-              private renderer:Renderer2) { }
+              private renderer:Renderer2) { 
+                
+              }
 
   makeLoader(): void{
     let bienvenida = <HTMLDivElement>document.querySelector('.path');
@@ -24,13 +30,32 @@ export class FinanciarPageComponent implements OnInit {
     this.renderer.addClass(loading, 'loading');
     this.renderer.appendChild(bienvenida, loading);
   }
-  //10205
+
+  openModal(action:boolean): void {
+    const modal = <HTMLDivElement>document.querySelector('.modal');
+    modal.style.visibility = action ? 'visible' : 'hidden';
+    modal.style.opacity = action ? '100%' : '0%';
+  }
+  
   isLoading(res:Boolean): void{
     let bienvenida = <HTMLDivElement>document.querySelector('.automoviles');
     let loading = <HTMLImageElement>document.querySelector('.loading');
   
     this.renderer.setStyle(loading, 'display', `${(res) ? 'block' : 'none'}`);
     this.renderer.setStyle(bienvenida, 'display', `${(res) ? 'none' : 'flex'}`);
+  }
+
+  financiarAuto(auto:Automovil): void {
+    console.log(auto.modelo.nombre);
+    this.isLoading(true);
+    this.financiar.FinanciarAutomovil(auto).subscribe( response => {
+      console.table(response);
+      this.isLoading(false);
+      // Abrir Modal y mostra informacion de financiamiento
+      this.selectedAuto = auto;
+      this.selectedAutoFinanciamiento = response;
+      this.openModal(true);
+    });
   }
   
   ngOnInit(): void {
