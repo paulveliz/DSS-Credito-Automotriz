@@ -1,8 +1,9 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Automovil } from '../interfaces/automovil.interface';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Automovil, PlanFinanciamiento } from '../interfaces/automovil.interface';
 import { AutosPorPlanResponse } from '../models/autosPorPlanResponse.interface';
 import { FinanciarResponse } from '../models/financiarResponse.interface';
+import { Marca } from '../models/planResponse.interface';
 import { AutomovilesService } from '../services/automoviles.service';
 
 @Component({
@@ -12,13 +13,18 @@ import { AutomovilesService } from '../services/automoviles.service';
 })
 export class FinanciarPageComponent implements OnInit {
 
+  public clienteActual: Number  = 0;
+  public planCliente: Number = 0;
   public autosPorPlan: any;
   public selectedAuto:Automovil | any;
   public selectedAutoFinanciamiento:FinanciarResponse | any;
+  public planesInferiores:PlanFinanciamiento[] | any;
+  // public marcasDeInferiores:Marca[] | any;
 
   constructor(private route:ActivatedRoute,
               private financiar:AutomovilesService,
-              private renderer:Renderer2) { 
+              private renderer:Renderer2,
+              private router:Router) { 
                 
               }
 
@@ -62,9 +68,13 @@ export class FinanciarPageComponent implements OnInit {
     this.isLoading(true);
     this.route.params.subscribe( params => {
       // Params: clienteId, planId
+      this.clienteActual = params.clienteId;
       this.financiar.ObtenerAutosPorPlan(params.planId).subscribe( autos => {
         this.autosPorPlan = autos;
-        this.isLoading(false);
+        this.financiar.ObtenerPlanesInferiores(params.planId).subscribe( planes => {
+          this.isLoading(false);
+          this.planesInferiores = planes;
+        })
       });
 
     });
@@ -72,6 +82,22 @@ export class FinanciarPageComponent implements OnInit {
 
   comprarAutomovil(automovil:Automovil):void{
     console.log(`Comprando ${automovil.modelo.nombre}`);
+  }
+
+  cambiarDePlan():void{
+    const selectPlan = (<HTMLSelectElement>document.querySelector('#planSelector'));
+    const selectedPlan = selectPlan.options[selectPlan.selectedIndex].value;
+    // this.router.navigate([`financiar/cliente/${this.clienteActual}/plan/${selectedPlan}`]);
+    // TODO VALIDAR
+    if(isNaN(parseInt(selectedPlan))){
+      return;
+    }
+    this.isLoading(true);
+    this.financiar.ObtenerAutosPorPlan(parseInt(selectedPlan)).subscribe( autos => {
+      this.autosPorPlan = autos;
+      this.isLoading(false);
+    });
+
   }
 
 }

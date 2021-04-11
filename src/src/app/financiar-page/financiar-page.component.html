@@ -4,28 +4,25 @@
     </div>
     <div class="filters">
         <div class="order-by">
-            <p>Buscar por:</p>
+            <p>Otro plan:</p>
             <label for="plan">
-                Plan:
-                <select name="plan" id="plan">
-                    <option value="Example">Ejemplo</option>
-                    <option value="Ejemplo">Ejemplo</option>
-                    <option value="Ejemplo">Ejemplo</option>
+                <select name="plan" id="planSelector">
+                    <option *ngFor="let pl of planesInferiores" value="{{pl.id_plan}}">{{pl.descripcion}}</option>
                 </select>
             </label>
-            <label for="Marca">
+            <!-- <label for="Marca">
                 Marca:
                 <select name="Marca" id="Marca">
                     <option value="Ejemplo">Ejemplo</option>
                     <option value="Ejemplo">Ejemplo</option>
                     <option value="Ejemplo">Ejemplo</option>
                 </select>
-            </label>
-            <button>Buscar</button>
+            </label> -->
+            <button (click)="cambiarDePlan()">Buscar</button>
         </div>
     </div>
     <div class="automoviles">
-        <div class="automovil" *ngFor = "let auto of autosPorPlan">
+        <div class="automovil" *ngFor="let auto of autosPorPlan">
             <img class="auto-image" src="{{auto.url_imagen}}">
             <p>
                 <img class="marca-auto" src="{{auto.marca.url_imagen}}"/>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://automotriz-webapi.azurewebsites.net'
+  apiUrl: 'https://localhost:5001'
 };
 
 /*
