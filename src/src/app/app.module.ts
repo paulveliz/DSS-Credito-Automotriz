@@ -14,6 +14,7 @@ import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-c
 import { HttpClientModule } from '@angular/common/http';
 import { SolicitudPageComponent } from './solicitud-page/solicitud-page.component';
 import { FinanciarPageComponent } from './financiar-page/financiar-page.component';
+import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FinanciarPageComponent } from './financiar-page/financiar-page.componen
     FooterComponent,
     SolicitaCreditoPageComponent,
     SolicitudPageComponent,
-    FinanciarPageComponent
+    FinanciarPageComponent,
+    ComprarAutomovilComponent
   ],
   imports: [
     BrowserModule,

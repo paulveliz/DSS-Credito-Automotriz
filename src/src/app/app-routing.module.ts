@@ -8,6 +8,7 @@ import { NuestrosClientesComponent } from './nuestros-clientes/nuestros-clientes
 import { SolicitaCreditoPageComponent } from './solicita-credito-page/solicita-credito-page.component';
 import { SolicitudPageComponent } from './solicitud-page/solicitud-page.component';
 import { FinanciarPageComponent } from './financiar-page/financiar-page.component';
+import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
 
 const routes: Routes = [
   { path: '', component: BienvenidaComponent, pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'solicitar/solicita-page', component: SolicitaCreditoPageComponent },
   { path: 'nueva-solicitud/:clienteId', component: SolicitudPageComponent },
   { path: 'financiar/cliente/:clienteId/plan/:planId', component: FinanciarPageComponent },
+  { path: 'comprar-automovil/:automovilId/cl/:clienteId', component: ComprarAutomovilComponent},
   { path: '**', redirectTo: '404' },
 ];
 

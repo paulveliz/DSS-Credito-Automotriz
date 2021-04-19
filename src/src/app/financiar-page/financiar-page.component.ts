@@ -81,7 +81,7 @@ export class FinanciarPageComponent implements OnInit {
   }
 
   comprarAutomovil(automovil:Automovil):void{
-    console.log(`Comprando ${automovil.modelo.nombre}`);
+    this.router.navigate([`comprar-automovil/${automovil.id_auto}/cl/${this.clienteActual}`]);
   }
 
   cambiarDePlan():void{
