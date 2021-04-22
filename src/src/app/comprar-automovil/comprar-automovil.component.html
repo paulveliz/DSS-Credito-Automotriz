@@ -1,1 +1,51 @@
-<p>comprar-automovil works!</p>
+<div class="nueva-compra-bg">
+    <div class="header" *ngIf="automovil; else noAutomovil">
+        <img src="{{automovil.url_imagen}}">
+        <h1>{{automovil.modelo.nombre}}</h1>
+        <ul>
+            <li>
+                <b>Marca:</b><span>{{automovil.marca.nombre}}</span>
+            </li>
+            <li>
+                <b>Modelo:</b><span>{{automovil.modelo.nombre}}</span>
+            </li>
+            <li>
+                <b>Precio comercial:</b><span>${{automovil.valor_comercial}}</span>
+            </li>
+            <li>
+                <b>Plan financiamiento:</b><span>{{automovil.plan_financiamiento.descripcion}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <ng-template #noAutomovil>
+        <div class="header">
+            <h1>Cargando datos...</h1>
+        </div>
+    </ng-template>
+
+
+    <div class="detalle-compra" *ngIf="autoFinanciado; else noFinanciado">
+        <h1>DETALLE DE COMPRA</h1>
+        <ul>
+            <li>
+                <b>Precio financiado:</b><span>${{autoFinanciado?.cantidad_a_financiar}}</span>
+            </li>
+            <li>
+                <b>Enganche:</b><span>${{autoFinanciado?.enganche}}</span>
+            </li>
+            <li>
+                <b>Meses:</b><span>{{autoFinanciado?.meses}}</span>
+            </li>
+            <li>
+                <b>Mensualidades:</b><span>${{autoFinanciado?.mensualidad}}</span>
+            </li>
+        </ul>
+        <button>COMPRAR AHORA</button>
+    </div>
+    <ng-template #noFinanciado>
+        <p>Cargando...</p>
+    </ng-template>
+
+
+</div>
