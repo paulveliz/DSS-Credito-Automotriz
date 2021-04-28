@@ -12,7 +12,7 @@ export class ReportesService {
 
   GenerarReporteEnganche(automovilId:number, planId:number, clienteId:number):Observable<any>{
     return this.http.post<any>(`${environment.apiUrl}/api/report/enganche`, {
-      url: `reporte/enganche/automovil/${automovilId}/plan/${planId}/cliente/${clienteId}`
+      url: `https://gentle-bush-024fdce10.azurestaticapps.net/#/reporte/enganche/automovil/${automovilId}/plan/${planId}/cliente/${clienteId}`
     });
   }
 
