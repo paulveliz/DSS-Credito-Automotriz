@@ -8,27 +8,12 @@ import jsPDF from 'jspdf';
 })
 export class FichaPagoComponent implements OnInit {
 
-  @ViewChild('fichaBody') report:ElementRef | null = null;
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
   descargarFicha():void{
-    let content= this.report?.nativeElement;  
-    let doc = new jsPDF();  
-    let _elementHandlers =  
-    {  
-      '#editor':function(element:any,renderer:any){  
-        return true;  
-      }  
-    };
-    doc.html(content.innerHTML, {
-      callback: (pdf) => {
-        doc.save('test.pdf'); 
-      }
-    });  
 
   }
 }

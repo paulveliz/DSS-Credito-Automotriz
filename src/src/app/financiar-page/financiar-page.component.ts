@@ -69,6 +69,7 @@ export class FinanciarPageComponent implements OnInit {
     this.route.params.subscribe( params => {
       // Params: clienteId, planId
       this.clienteActual = params.clienteId;
+      this.planCliente = params.planId;
       this.financiar.ObtenerAutosPorPlan(params.planId).subscribe( autos => {
         this.autosPorPlan = autos;
         this.financiar.ObtenerPlanesInferiores(params.planId).subscribe( planes => {
@@ -81,12 +82,13 @@ export class FinanciarPageComponent implements OnInit {
   }
 
   comprarAutomovil(automovil:Automovil):void{
-    this.router.navigate([`comprar-automovil/${automovil.id_auto}/cl/${this.clienteActual}`]);
+    this.router.navigate([`comprar-automovil/${automovil.id_auto}/cl/${this.clienteActual}/plan/${this.planCliente}`]);
   }
 
   cambiarDePlan():void{
     const selectPlan = (<HTMLSelectElement>document.querySelector('#planSelector'));
     const selectedPlan = selectPlan.options[selectPlan.selectedIndex].value;
+    this.planCliente = parseInt(selectedPlan);
     // this.router.navigate([`financiar/cliente/${this.clienteActual}/plan/${selectedPlan}`]);
     // TODO VALIDAR
     if(isNaN(parseInt(selectedPlan))){

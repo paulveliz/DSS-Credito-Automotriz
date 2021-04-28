@@ -12,8 +12,7 @@ import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil
 import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
 
 const routes: Routes = [
-  { path: '', component: FichaPagoComponent, pathMatch: 'full' },
-  // { path: '', component: BienvenidaComponent, pathMatch: 'full' },
+  { path: '', component: BienvenidaComponent, pathMatch: 'full' },
   { path: '404', component: Error404Component },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'solicitar', component: SolicitarCreditoComponent },
@@ -21,7 +20,8 @@ const routes: Routes = [
   { path: 'solicitar/solicita-page', component: SolicitaCreditoPageComponent },
   { path: 'nueva-solicitud/:clienteId', component: SolicitudPageComponent },
   { path: 'financiar/cliente/:clienteId/plan/:planId', component: FinanciarPageComponent },
-  { path: 'comprar-automovil/:automovilId/cl/:clienteId', component: ComprarAutomovilComponent},
+  { path: 'comprar-automovil/:automovilId/cl/:clienteId/plan/:planId', component: ComprarAutomovilComponent},
+  { path: 'reporte/enganche/automovil/:automovilId/plan/:planId/cliente/:clienteId', component: FichaPagoComponent},
   { path: '**', redirectTo: '404' },
 ];
 

@@ -21,6 +21,7 @@ export class ComprarAutomovilComponent implements OnInit {
     this.route.params.subscribe( params => {
       console.log(params.clienteId);
       console.log(params.automovilId);
+      // plan id
 
       this.apiAutos.ObtenerAutomovilId(<number>params.automovilId).subscribe( automovil => {
         this.automovil = automovil;
@@ -32,5 +33,7 @@ export class ComprarAutomovilComponent implements OnInit {
 
     });
   }
+
+
 
 }
