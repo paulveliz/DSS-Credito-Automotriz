@@ -11,9 +11,11 @@ export class ReportesService {
   constructor(private http:HttpClient) { }
 
   GenerarReporteEnganche(automovilId:number, planId:number, clienteId:number):Observable<any>{
-    return this.http.post<any>(`${environment.apiUrl}/api/report/enganche`, {
+    console.log('GENERANDO REPORTE')
+    
+    return this.http.post(`${environment.apiUrl}/api/report/enganche`,{
       url: `https://gentle-bush-024fdce10.azurestaticapps.net/#/reporte/enganche/automovil/${automovilId}/plan/${planId}/cliente/${clienteId}`
-    });
+    }, { responseType: 'blob' });
   }
 
 }

@@ -4,6 +4,7 @@ import { Automovil } from '../interfaces/automovil.interface';
 import { FinanciarResponse } from '../models/financiarResponse.interface';
 import { AutomovilesService } from '../services/automoviles.service';
 import { ReportesService } from '../services/reportes.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-comprar-automovil',
@@ -45,10 +46,13 @@ export class ComprarAutomovilComponent implements OnInit {
     });
   }
   comprarAuto(){
+      var mediaType = 'application/pdf';
       this.apiReport.GenerarReporteEnganche(this.automovilId, this.planId, this.clienteId)
-                    .subscribe( pdf => {
-                      window.open(pdf);
-                    });
+                    .subscribe(
+                      (response) => {
+                          var blob = new Blob([response], { type: mediaType });
+                          saveAs(blob, 'ficha-pago.pdf');
+                      });
   }
 
 
