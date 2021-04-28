@@ -41,7 +41,7 @@
                 <b>Mensualidades:</b><span>${{autoFinanciado?.mensualidad}}</span>
             </li>
         </ul>
-        <button>COMPRAR AHORA</button>
+        <button (click)="comprarAuto()">COMPRAR AHORA</button>
     </div>
     <ng-template #noFinanciado>
         <p>Cargando...</p>
