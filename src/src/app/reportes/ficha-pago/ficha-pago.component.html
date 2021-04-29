@@ -1,6 +1,6 @@
-<div class="main">
+<div *ngIf="this.automovil && this.cliente && this.financiado; else noData" class="main">
   
-    <table *ngIf="this.automovil && this.cliente && this.financiado;" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" >
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" >
         <tr>
           <td class="outer-padding" valign="top" align="left">
             <table class="w320" cellspacing="0" cellpadding="0" width="600" height="723">
@@ -158,3 +158,9 @@
         </tr>
         </table>
 </div>
+
+<ng-template #noData>
+  <div class="main">
+    <h1>Cargando datos ...</h1>
+  </div>
+</ng-template>

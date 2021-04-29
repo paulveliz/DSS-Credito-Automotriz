@@ -30,7 +30,7 @@ export class AutomovilesService {
   }
 
   ObtenerPlanesInferiores(planId:Number): Observable<PlanFinanciamiento[]>{
-    return this.http.get<PlanFinanciamiento[]>(`https://localhost:5001/api/planes/inferioridad/${planId}`);
+    return this.http.get<PlanFinanciamiento[]>(`${environment.apiUrl}/api/planes/inferioridad/${planId}`);
   }
 
   ObtenerAutomovilId(automovilId:number): Observable<Automovil>{
