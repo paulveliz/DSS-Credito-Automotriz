@@ -5,7 +5,6 @@ import { ClienteResponse } from 'src/app/models/clienteResponse.interface';
 import { FinanciarResponse } from 'src/app/models/financiarResponse.interface';
 import { AutomovilesService } from 'src/app/services/automoviles.service';
 import { ClientesService } from 'src/app/services/clientes.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ficha-pago',

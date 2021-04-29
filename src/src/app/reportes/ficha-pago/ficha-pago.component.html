@@ -1,6 +1,6 @@
-<div *ngIf="this.automovil && this.cliente && this.financiado; else noData" class="main">
+<div class="main">
   
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" >
+    <table *ngIf="this.automovil && this.cliente && this.financiado; else noData" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" >
         <tr>
           <td class="outer-padding" valign="top" align="left">
             <table class="w320" cellspacing="0" cellpadding="0" width="600" height="723">
