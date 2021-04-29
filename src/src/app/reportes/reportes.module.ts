@@ -9,10 +9,10 @@ import { FichaPagoComponent } from './ficha-pago/ficha-pago.component';
     FichaPagoComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   exports: [
-    FichaPagoComponent
+    FichaPagoComponent,
   ]
 })
 export class ReportesModule { }

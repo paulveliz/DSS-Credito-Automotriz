@@ -1,5 +1,6 @@
-<div class="main">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+<div *ngIf="this.automovil && this.cliente && this.financiado; else noData" class="main">
+  
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" >
         <tr>
           <td class="outer-padding" valign="top" align="left">
             <table class="w320" cellspacing="0" cellpadding="0" width="600" height="723">
@@ -17,10 +18,10 @@
                     <tr>
                       <td class="hide-for-mobile"  height="150" valign="top" >
                         <b>
-                          <span>Awesome Co</span>
+                          <span>Auto Shop</span>
                           </b>
                         <br>
-                        <span>1337 Swuby Lane Victoria, BC A1B 2C3</span>
+                        <span>Pago de enganche</span>
                       </td>
                     </tr>
         
@@ -40,14 +41,14 @@
                           <tr>
                             <td width="355">
                               <h1>
-                                Invoice:
+                                Factura: #
                                 <span>
                                   2NV6E1xiRXOrPr
                                 </span>
                               </h1>
                               <h2>
                                 <span>
-                                  05/16/2013
+                                  {{fecha}}
                                 </span>
                               </h2>
                             </td>
@@ -57,43 +58,67 @@
                               <table class="data-table" cellpadding="0" cellspacing="0">
                                 <tr>
                                   <th>
-                                    Client
+                                    Cliente
                                   </th>
                                 </tr>
                                 <tr>
                                   <td>
                                     <span>
-                                      customer@example.com
+                                      {{cliente.datos_generales.nombre_completo}}
                                     </span>
                                   </td>
                                 </tr>
                                 <tr>
                                   <th>
-                                    Plan
+                                    Concepto
                                   </th>
                                 </tr>
                                 <tr>
                                   <td>
                                     <span>
-                                      Gold Plan
+                                      Comprobante de pago de enganche por la compra y adquisicion de un automovil.
                                     </span>
                                   </td>
                                 </tr>
                                 <tr>
                                   <th>
-                                    Date
+                                    Automovil adquirido
                                   </th>
                                 </tr>
                                 <tr>
                                   <td>
                                     <span>
-                                      04/30/2013
+                                      {{automovil.marca.nombre}} {{automovil.modelo.nombre}}
                                     </span>
                                   </td>
                                 </tr>
                                 <tr>
                                   <th>
-                                    Amount Due
+                                    Importe total de la compra <i>(enganche incluido)</i>
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                      ${{financiado.cantidad_a_financiar}} MXN
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Fecha de compra
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                      {{fecha}}
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Monto pagado <i>(enganche)</i>
                                   </th>
                                 </tr>
                                 <tr>
@@ -102,7 +127,7 @@
                                       <tr>
                                         <td class="data-table-amount" style="width: 85px;">
                                           <span>
-                                            $49.99
+                                            ${{financiado.enganche}} MXN
                                           </span>
                                         </td>
                                         <td style="width: 315px;" align="left">
@@ -121,18 +146,6 @@
                             </td>
                           </tr>
                         </table>
-        
-                        <table cellspacing="0" cellpadding="0" width="100%">
-                          <tr>
-                            <td class="hide-for-desktop-text">
-                              <b>
-                                <span>Awesome Co</span>
-                              </b>
-                              <br>
-                              <span>1337 Swuby Lane<br>Victoria, BC A1B 2C3</span>
-                            </td>
-                          </tr>
-                        </table>
                       </td>
         
                     </tr>
@@ -145,3 +158,9 @@
         </tr>
         </table>
 </div>
+
+<ng-template #noData>
+  <div class="main">
+    <h1>Cargando datos ...</h1>
+  </div>
+</ng-template>
