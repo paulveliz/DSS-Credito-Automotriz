@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SolicitudPageComponent } from './solicitud-page/solicitud-page.component';
 import { FinanciarPageComponent } from './financiar-page/financiar-page.component';
 import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
+import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil
     SolicitaCreditoPageComponent,
     SolicitudPageComponent,
     FinanciarPageComponent,
-    ComprarAutomovilComponent
+    ComprarAutomovilComponent,
+    FichaPagoComponent
   ],
   imports: [
     BrowserModule,
