@@ -128,4 +128,140 @@
     text-shadow: 1px 1px 5px black;
 }
 
+.modal{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.53);
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
 
+.contenido{
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.612);
+    transition: all 500ms ease;
+    position: relative;
+    border-radius: 10px;
+}
+
+.contenido header{
+    padding: 10px;
+    background: rgba(43, 43, 236, 0.911);
+    color: white;
+    border-radius: 10px;
+}
+
+.contenido label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.contenido label:hover{
+    color: red;
+    text-shadow: 1px 1px 4px black;
+}
+.contenido label:active{
+    color: black;
+    text-shadow: 1px 1px 4px black;
+}
+
+.modal .contenido p{
+    padding: 25px;
+    text-align: justify;
+    margin: 0;
+}
+
+.modal .contenido p span{
+    color: black;
+    text-shadow: 0px 0px 1px black;
+}
+
+.image-content{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.modal .contenido img{
+    margin-top: 5px;
+    text-align: center;
+    align-self: center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.modal .contenido button{
+    background: rgba(47, 47, 236, 0.666);
+    color: white;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    box-shadow: 0px 0px 1px 0px black;
+}
+
+.modal .contenido button:hover{
+    box-shadow: 0px 0px 5px 0px black;
+}
+
+.modal .contenido button:active{
+    color: black;
+    box-shadow: 0px 0px 3px 1px black;
+}
+
+.congrats-zone{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.congrats-zone h1{
+    font-size: 3em;
+    font-weight: 400;
+    color: brown;
+}
+
+.congrats-zone span {
+    font-size: 2.5em;
+    font-weight: 200;
+    color: rgba(47, 47, 236, 0.666);
+}
+
+.congrats-zone button{
+    padding: 10px;
+    color: white;
+    background: green;
+    margin-top: 15px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 1px 0px black;
+    font-size: 1em;
+}
+
+.congrats-zone button:hover{
+    box-shadow: 1px 1px 4px 0px black;
+    color: black;
+}
+
+.congrats-zone button:active{
+    color: white;
+}

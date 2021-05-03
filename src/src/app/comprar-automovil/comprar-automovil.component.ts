@@ -18,11 +18,13 @@ export class ComprarAutomovilComponent implements OnInit {
   private planId:number = 0;
   private clienteId:number = 0;
   private automovilId:number = 0;
+  public congrats:boolean = false;
 
   constructor(private route:ActivatedRoute,
               // private router:Router,
               private apiAutos:AutomovilesService,
-              private apiReport:ReportesService
+              private apiReport:ReportesService,
+              private router:Router
               ) { }
 
   ngOnInit(): void {
@@ -46,13 +48,41 @@ export class ComprarAutomovilComponent implements OnInit {
     });
   }
   comprarAuto(){
-      var mediaType = 'application/pdf';
-      this.apiReport.GenerarReporteEnganche(this.automovilId, this.planId, this.clienteId)
-                    .subscribe(
-                      (response) => {
-                          var blob = new Blob([response], { type: mediaType });
-                          saveAs(blob, 'ficha-pago.pdf');
-                      });
+    this.payEstatus(true);
+    var mediaType = 'application/pdf';
+    this.apiReport.GenerarReporteEnganche(this.automovilId, this.planId, this.clienteId)
+    .subscribe(
+      (response) => {
+        this.payEstatus(false);
+        this.openModal(false);
+        var blob = new Blob([response], { type: mediaType });
+        window.open(URL.createObjectURL(blob));
+        saveAs(blob, 'ficha-pago.pdf');
+        this.congrats = true;
+        // this.router.navigate(['congrats']);
+      });
+  }
+
+  openModal(action:boolean): void {
+    const modal = <HTMLDivElement>document.querySelector('.modal');
+    modal.style.visibility = action ? 'visible' : 'hidden';
+    modal.style.opacity = action ? '100%' : '0%';
+  }
+
+  payEstatus(loading:boolean):void{
+    const paytext = <HTMLParagraphElement>document.querySelector('#paytext');
+    const paybutton = <HTMLButtonElement>document.querySelector('#paybutton');
+    paytext.innerText = loading == true ? "GENERANDO RECIBO DE PAGO..." : `
+      Al aceptar este formulario estará aceptando el contrato y pagará el enganche
+      previamente financiado.
+      ¿Continuar con la compra?
+    `;
+    paybutton.style.visibility = 'hidden';
+
+  }
+
+  goToSession(){
+    this.router.navigate(['acceso']);
   }
 
 
