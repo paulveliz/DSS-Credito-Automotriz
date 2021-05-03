@@ -16,6 +16,7 @@ import { SolicitudPageComponent } from './solicitud-page/solicitud-page.componen
 import { FinanciarPageComponent } from './financiar-page/financiar-page.component';
 import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
 import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
+import { PerfilModule } from './perfil/perfil.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PerfilModule
   ],
   providers: [],
   bootstrap: [AppComponent]

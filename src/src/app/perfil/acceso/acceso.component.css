@@ -1,0 +1,49 @@
+.main{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.caja-inicio h1{
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    font-size: 2em;
+    color: brown;
+}
+
+.caja-inicio{
+    margin-top: 3em;
+    padding: 3em;
+    box-shadow: 1px 1px 2px 0px black;
+    border: none;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.caja-inicio input{
+    /* margin: 1em; */
+    padding: 5px;
+    font-size: 1em;
+}
+
+.caja-inicio button{
+    margin-top: 7px;
+    padding: 5px;
+    color: white;
+    background-color: rgb(0, 115, 255);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;    
+}
+
+.caja-inicio button:hover{
+    color: rgba(0, 0, 0, 0.537);
+}
+
+
+.caja-inicio button:active{
+    color: rgb(198, 179, 245);
+}

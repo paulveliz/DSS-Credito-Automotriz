@@ -10,6 +10,7 @@ import { SolicitudPageComponent } from './solicitud-page/solicitud-page.componen
 import { FinanciarPageComponent } from './financiar-page/financiar-page.component';
 import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
 import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
+import { AccesoComponent } from './perfil/acceso/acceso.component';
 
 const routes: Routes = [
   { path: '', component: BienvenidaComponent, pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'solicitar', component: SolicitarCreditoComponent },
   { path: 'clientes', component: NuestrosClientesComponent },
+  { path: 'acceso', component: AccesoComponent },
   { path: 'solicitar/solicita-page', component: SolicitaCreditoPageComponent },
   { path: 'nueva-solicitud/:clienteId', component: SolicitudPageComponent },
   { path: 'financiar/cliente/:clienteId/plan/:planId', component: FinanciarPageComponent },
