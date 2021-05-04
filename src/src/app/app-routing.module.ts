@@ -11,6 +11,7 @@ import { FinanciarPageComponent } from './financiar-page/financiar-page.componen
 import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
 import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
 import { AccesoComponent } from './perfil/acceso/acceso.component';
+import { PerfilClienteComponent } from './perfil/perfil-cliente/perfil-cliente.component';
 
 const routes: Routes = [
   { path: '', component: BienvenidaComponent, pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'solicitar', component: SolicitarCreditoComponent },
   { path: 'clientes', component: NuestrosClientesComponent },
   { path: 'acceso', component: AccesoComponent },
+  { path: 'perfil/cliente/:clienteId', component: PerfilClienteComponent },
   { path: 'solicitar/solicita-page', component: SolicitaCreditoPageComponent },
   { path: 'nueva-solicitud/:clienteId', component: SolicitudPageComponent },
   { path: 'financiar/cliente/:clienteId/plan/:planId', component: FinanciarPageComponent },

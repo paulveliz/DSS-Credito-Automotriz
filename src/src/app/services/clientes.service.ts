@@ -33,6 +33,10 @@ export class ClientesService {
   ObtenerClientePorId(clienteId:Number):Observable<ClienteResponse>{
     return this.http.get<ClienteResponse>(`${environment.apiUrl}/api/clientes/${clienteId}`);
   }
+
+  ObtenerClientePorCurp(clienteId:string):Observable<ClienteResponse>{
+    return this.http.get<ClienteResponse>(`${environment.apiUrl}/api/clientes/curp/${clienteId}`);
+  }
   // TODO REFACTOR
   ObtenerClientesExistentes():Observable<ClienteResponse[]>{
     return this.http.get<ClienteResponse[]>(`${environment.apiUrl}/api/clientes`, {

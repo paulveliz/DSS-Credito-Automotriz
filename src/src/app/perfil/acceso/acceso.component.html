@@ -1,7 +1,7 @@
 <div class="main">
     <div class="caja-inicio">
         <h1>Iniciar sesión</h1>
-        <input name="curp" id="curp" type="text" placeholder="Introduce tu CURP">
-        <button>Acceder</button>
+        <input #inputCurp name="curp" id="curp" type="text" placeholder="Introduce tu CURP">
+        <button id="loginButton" (click)="logIn(inputCurp.value)">Acceder</button>
     </div>
 </div>
