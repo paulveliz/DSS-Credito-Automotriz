@@ -1,0 +1,42 @@
+<div class="main">
+    <div class="client-box" *ngIf="this.cliente; else noClient">
+        <img src="{{cliente.datos_generales.url_imagen}}" alt="Imagen del cliente">
+        <span>¡Hola {{cliente.datos_generales.nombre_completo}}!</span>
+    </div>
+
+    <hr>
+    <div class="content">
+        <h1>Bienvenido a nuestra plataforma</h1>
+        <span>¿Que movimiento deseas realizar?</span>
+    </div>
+    
+    <div class="options-box">
+        <button (click)="openModal(true)">Abonar a deuda</button>
+        <button>Estado credicticio</button>
+        <button>Historial</button>
+        <button>Comprar de nuevo</button>
+        <button>Mi informacion</button>
+    </div>
+
+    <p>Para nosotros tu opinion es muy importante, si tienes dudas por favor comunicate con nosotros a la brevedad posible.</p>
+
+    <ng-template #noClient>
+        <img src="../../../assets/loading.gif" alt="">
+    </ng-template>
+</div>
+
+<div class="modal">
+    <div class="contenido">
+        <label (click)="openModal(false)" >X</label>
+        <header>Abonar a tu deuda</header>
+        <div class="image-content">
+            <p id="paytext">
+                Al aceptar este formulario estará aceptando el cobro a su tarjeta de credito
+                por <span class="cobro">$0.00</span> para abonar a su deuda actual de su vehiculo.
+                ¿Continuar con el pago?
+            </p>
+            <button id="paybutton" >ACEPTAR Y ABONAR</button>
+        </div>
+    </div>
+
+</div>

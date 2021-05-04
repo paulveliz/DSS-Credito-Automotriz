@@ -1,0 +1,177 @@
+.main{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(7, 73, 132, 0.36); */
+    padding: 25px;
+}
+
+.client-box{
+    margin-top: 2em;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.client-box span{
+    font-size: 2em;
+    font-weight: 100;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    text-shadow: 0px 0px 0px black;
+}
+.client-box span::before{
+    content: '💎';
+}
+.client-box span::after{
+    content: '💎';
+}
+.client-box img{
+    border-radius: 50%;
+    width: 15.5em;
+    height: 15em;
+    margin-bottom: 1em;
+}
+
+.options-box button{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 1em;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 0px black;
+    background: rgb(30, 111, 250);
+    margin-left: 1em;
+}
+.options-box button:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 0px black;
+    opacity: 70%;
+}
+
+.options-box button:active{
+    color: black;
+    opacity: 80%;
+}
+
+.content{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.content h1{
+    color: rgb(0, 98, 255);
+    font-weight: 100;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 5em;
+    text-align: center;
+}
+
+.content span{
+    color: rgb(0, 98, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
+}
+
+.modal{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.53);
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.contenido{
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.612);
+    transition: all 500ms ease;
+    position: relative;
+    border-radius: 10px;
+}
+
+.contenido header{
+    padding: 10px;
+    background: rgba(43, 43, 236, 0.911);
+    color: white;
+    border-radius: 10px;
+}
+
+.contenido label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.contenido label:hover{
+    color: red;
+    text-shadow: 1px 1px 4px black;
+}
+.contenido label:active{
+    color: black;
+    text-shadow: 1px 1px 4px black;
+}
+
+.modal .contenido p{
+    padding: 25px;
+    text-align: justify;
+    margin: 0;
+}
+
+.modal .contenido p span{
+    color: black;
+    text-shadow: 0px 0px 1px black;
+}
+
+.image-content{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.modal .contenido img{
+    margin-top: 5px;
+    text-align: center;
+    align-self: center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.modal .contenido button{
+    background: rgba(47, 47, 236, 0.666);
+    color: white;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    box-shadow: 0px 0px 1px 0px black;
+}
+
+.modal .contenido button:hover{
+    box-shadow: 0px 0px 5px 0px black;
+}
+
+.modal .contenido button:active{
+    color: black;
+    box-shadow: 0px 0px 3px 1px black;
+}
