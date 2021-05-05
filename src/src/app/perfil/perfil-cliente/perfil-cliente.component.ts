@@ -11,6 +11,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
 export class PerfilClienteComponent implements OnInit {
 
   public cliente:ClienteResponse | null = null;
+  public selectedDeudas:boolean = false;
 
   constructor(
     private route:ActivatedRoute,

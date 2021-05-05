@@ -11,7 +11,7 @@
     </div>
     
     <div class="options-box">
-        <button (click)="openModal(true)">Abonar a deuda</button>
+        <button (click)="this.selectedDeudas = !selectedDeudas">Abonar a deuda</button>
         <button>Estado credicticio</button>
         <button>Historial</button>
         <button>Comprar de nuevo</button>
@@ -19,6 +19,10 @@
     </div>
 
     <p>Para nosotros tu opinion es muy importante, si tienes dudas por favor comunicate con nosotros a la brevedad posible.</p>
+
+    <div class="deudas" *ngIf="this.selectedDeudas">
+        <h1>Deudas actuales</h1>
+    </div>
 
     <ng-template #noClient>
         <img src="../../../assets/loading.gif" alt="">
