@@ -19,6 +19,7 @@ export class FinanciarPageComponent implements OnInit {
   public selectedAuto:Automovil | any;
   public selectedAutoFinanciamiento:FinanciarResponse | any;
   public planesInferiores:PlanFinanciamiento[] | any;
+  public solicitudId:number = 0;
   // public marcasDeInferiores:Marca[] | any;
 
   constructor(private route:ActivatedRoute,
@@ -70,6 +71,7 @@ export class FinanciarPageComponent implements OnInit {
       // Params: clienteId, planId
       this.clienteActual = params.clienteId;
       this.planCliente = params.planId;
+      this.solicitudId = params.solicitudId;
       this.financiar.ObtenerAutosPorPlan(params.planId).subscribe( autos => {
         this.autosPorPlan = autos;
         this.financiar.ObtenerPlanesInferiores(params.planId).subscribe( planes => {
@@ -82,7 +84,7 @@ export class FinanciarPageComponent implements OnInit {
   }
 
   comprarAutomovil(automovil:Automovil):void{
-    this.router.navigate([`comprar-automovil/${automovil.id_auto}/cl/${this.clienteActual}/plan/${this.planCliente}`]);
+    this.router.navigate([`comprar-automovil/${automovil.id_auto}/cl/${this.clienteActual}/plan/${this.planCliente}/${this.solicitudId}`]);
   }
 
   cambiarDePlan():void{

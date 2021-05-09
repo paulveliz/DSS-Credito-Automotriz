@@ -62,7 +62,7 @@ export class SolicitudPageComponent implements OnInit {
 
   financiarAutomovil(){
     if(this.cliente && this.planSugerido){
-      this.router.navigate([`financiar/cliente/${this.cliente.datos_generales.id_cliente}/plan/${this.planSugerido.id_plan}`]);
+      this.router.navigate([`financiar/cliente/${this.cliente.datos_generales.id_cliente}/plan/${this.planSugerido.id_plan}/${this.solicitud.id_solicitud}`]);
     }else{
       alert('No se ha detectado un cliente y un plan.');
     }

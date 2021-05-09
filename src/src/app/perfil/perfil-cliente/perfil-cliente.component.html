@@ -11,7 +11,7 @@
     </div>
     
     <div class="options-box">
-        <button (click)="openModal(true)">Abonar a deuda</button>
+        <button (click)="cagarDeudas()">Abonar a deuda</button>
         <button>Estado credicticio</button>
         <button>Historial</button>
         <button>Comprar de nuevo</button>
@@ -20,6 +20,21 @@
 
     <p>Para nosotros tu opinion es muy importante, si tienes dudas por favor comunicate con nosotros a la brevedad posible.</p>
 
+    <div class="main-deudas" *ngIf="this.selectedDeudas">
+        <h1>Deudas actuales</h1>
+        <div class="deudas" *ngIf="this.deudas; else noClient">
+            <div class="deuda" *ngFor="let deuda of this.deudas">
+                <span> <b>Folio:</b> #{{deuda.id}}</span>
+                <span> <b>Fecha de incio:</b> {{deuda.fecha}}</span>
+                <span> <b>Ultimo abono:</b> {{deuda.ultimoAbono}}</span>
+                <span> <b>Mensualidades restantes:</b> {{deuda.idFinanciamientoNavigation.meses}}</span>
+                <span> <b>Abono mensual:</b> {{deuda.idFinanciamientoNavigation.mensualidad}}</span>
+                <span> <b>Usted debe:</b> {{deuda.idFinanciamientoNavigation.cantidadAFinanciar}}</span>
+                <button (click)="openModal(true, deuda);">Abonar</button>
+            </div>
+        </div>
+    </div>
+
     <ng-template #noClient>
         <img src="../../../assets/loading.gif" alt="">
     </ng-template>
@@ -27,16 +42,28 @@
 
 <div class="modal">
     <div class="contenido">
-        <label (click)="openModal(false)" >X</label>
-        <header>Abonar a tu deuda</header>
-        <div class="image-content">
-            <p id="paytext">
-                Al aceptar este formulario estará aceptando el cobro a su tarjeta de credito
-                por <span class="cobro">$0.00</span> para abonar a su deuda actual de su vehiculo.
-                ¿Continuar con el pago?
-            </p>
-            <button id="paybutton" >ACEPTAR Y ABONAR</button>
+        <label (click)="openModal(false, null)" >X</label>
+        <div class="pre" *ngIf="!isLoading; else loading">
+            <div class="modal-deuda-content" *ngIf="this.clickedDeuda">
+                <header>Abonar a tu deuda</header>
+                <div class="image-content">
+                    <p id="paytext">
+                        Al aceptar este formulario estará aprobando el cobro a su tarjeta de credito
+                        por <span class="cobro">${{clickedDeuda.idFinanciamientoNavigation.mensualidad}}</span> para abonar a la deuda seleccionada.
+                        ¿Continuar con el pago?
+                    </p>
+                    <button id="paybutton" (click)="abonarDeuda()">ACEPTAR Y ABONAR</button>
+                </div>
+            </div>
         </div>
     </div>
 
+    <ng-template #loading>
+        <header>Abonar a tu deuda</header>
+        <div class="image-content">
+            <p id="paytext">
+                Generando abono...
+            </p>
+        </div>
+    </ng-template>
 </div>

@@ -2,7 +2,9 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AbonarDeudaResponse } from '../models/abonarDeudaResponse.interface';
 import { ClienteResponse } from '../models/clienteResponse.interface';
+import { DeudasClientesResponse } from '../models/deudasClientesResponse.interface';
 import { PlanResponse } from '../models/planResponse.interface';
 import { SolicitudResponse } from '../models/solicitudResponse.interface';
 
@@ -47,5 +49,13 @@ export class ClientesService {
   // TODO REFACTOR
   CrearNuevoCLiente(cliente: Object):Observable<ClienteResponse>{
     return this.http.post<ClienteResponse>(`${environment.apiUrl}/api/clientes/nuevo`, cliente);
+  }
+
+  ObtenerDeudasCliente(curp:string):Observable<DeudasClientesResponse[]>{
+    return this.http.get<DeudasClientesResponse[]>(`${environment.apiUrl}/api/deudas/${curp.trim()}`);
+  }
+
+  AbonarAdeuda(deudaId:number):Observable<AbonarDeudaResponse>{
+    return this.http.post<AbonarDeudaResponse>(`${environment.apiUrl}/api/deudas/abonar/${deudaId}`, {});
   }
 }

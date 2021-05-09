@@ -14,6 +14,7 @@ import { saveAs } from 'file-saver';
 export class ComprarAutomovilComponent implements OnInit {
 
   public automovil:Automovil | null = null;
+  public solicitudId:number = 0;
   public autoFinanciado:FinanciarResponse | null = null;
   private planId:number = 0;
   private clienteId:number = 0;
@@ -29,13 +30,10 @@ export class ComprarAutomovilComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe( params => {
-      console.log(params.clienteId);
-      console.log(params.automovilId);
-      console.log(params.planId);
-      // plan id
       this.planId = params.planId;
       this.clienteId = params.clienteId;
       this.automovilId = params.automovilId;
+      this.solicitudId = params.solicitudId;
 
       this.apiAutos.ObtenerAutomovilId(<number>params.automovilId).subscribe( automovil => {
         this.automovil = automovil;
@@ -47,20 +45,25 @@ export class ComprarAutomovilComponent implements OnInit {
 
     });
   }
+
   comprarAuto(){
-    this.payEstatus(true);
-    var mediaType = 'application/pdf';
-    this.apiReport.GenerarReporteEnganche(this.automovilId, this.planId, this.clienteId)
-    .subscribe(
-      (response) => {
-        this.payEstatus(false);
-        this.openModal(false);
-        var blob = new Blob([response], { type: mediaType });
-        window.open(URL.createObjectURL(blob));
-        saveAs(blob, 'ficha-pago.pdf');
-        this.congrats = true;
-        // this.router.navigate(['congrats']);
-      });
+    if(this.autoFinanciado){
+      this.payEstatus(true);
+      var mediaType = 'application/pdf';
+      this.apiReport.GenerarReporteEnganche(this.automovilId, this.planId, this.clienteId, this.solicitudId, this.autoFinanciado)
+      .subscribe(
+        (response) => {
+          this.payEstatus(false);
+          this.openModal(false);
+          var blob = new Blob([response], { type: mediaType });
+          window.open(URL.createObjectURL(blob));
+          saveAs(blob, 'ficha-pago.pdf');
+          this.congrats = true;
+          // this.router.navigate(['congrats']);
+        });
+    }else{
+      alert("Nada que comprar.");
+    }
   }
 
   openModal(action:boolean): void {
