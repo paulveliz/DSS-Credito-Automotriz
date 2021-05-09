@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'perfil/cliente/:clienteId', component: PerfilClienteComponent },
   { path: 'solicitar/solicita-page', component: SolicitaCreditoPageComponent },
   { path: 'nueva-solicitud/:clienteId', component: SolicitudPageComponent },
-  { path: 'financiar/cliente/:clienteId/plan/:planId', component: FinanciarPageComponent },
-  { path: 'comprar-automovil/:automovilId/cl/:clienteId/plan/:planId', component: ComprarAutomovilComponent},
+  { path: 'financiar/cliente/:clienteId/plan/:planId/:solicitudId', component: FinanciarPageComponent },
+  { path: 'comprar-automovil/:automovilId/cl/:clienteId/plan/:planId/:solicitudId', component: ComprarAutomovilComponent},
   { path: 'reporte/enganche/automovil/:automovilId/plan/:planId/cliente/:clienteId', component: FichaPagoComponent},
   { path: '**', redirectTo: '404' },
 ];

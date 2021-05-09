@@ -51,8 +51,8 @@ export class ClientesService {
     return this.http.post<ClienteResponse>(`${environment.apiUrl}/api/clientes/nuevo`, cliente);
   }
 
-  ObtenerDeudasCliente(curp:string):Observable<DeudasClientesResponse>{
-    return this.http.get<DeudasClientesResponse>(`${environment.apiUrl}/api/deudas/${curp.trim()}`);
+  ObtenerDeudasCliente(curp:string):Observable<DeudasClientesResponse[]>{
+    return this.http.get<DeudasClientesResponse[]>(`${environment.apiUrl}/api/deudas/${curp.trim()}`);
   }
 
   AbonarAdeuda(deudaId:number):Observable<AbonarDeudaResponse>{
