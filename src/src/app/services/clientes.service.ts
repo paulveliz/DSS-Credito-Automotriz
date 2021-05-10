@@ -55,6 +55,10 @@ export class ClientesService {
     return this.http.get<DeudasClientesResponse[]>(`${environment.apiUrl}/api/deudas/${curp.trim()}`);
   }
 
+  ObtenerDeudaPorId(id:number):Observable<DeudasClientesResponse>{
+    return this.http.get<DeudasClientesResponse>(`${environment.apiUrl}/api/deudas/id/${id}`);
+  }
+
   AbonarAdeuda(deudaId:number):Observable<AbonarDeudaResponse>{
     return this.http.post<AbonarDeudaResponse>(`${environment.apiUrl}/api/deudas/abonar/${deudaId}`, {});
   }

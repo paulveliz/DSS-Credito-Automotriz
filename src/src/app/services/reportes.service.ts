@@ -24,12 +24,19 @@ export class ReportesService {
         Enganche: financiamiento.enganche,
         CantidadAFinanciar: financiamiento.cantidad_a_financiar,
         Meses: financiamiento.meses,
-        Mensualidad: financiamiento.mensualidad
+        Mensualidad: financiamiento.mensualidad,
+        IdAutomovil: financiamiento.automovil.id
       },
       Item3:{
         IdCliente: clienteId,
         IdSolicitud: solicitudId 
       }
+    }, { responseType: 'blob' });
+  }
+
+  GenerarReporteAbono(deudaId:number):Observable<any>{
+    return this.http.post(`${environment.apiUrl}/api/report/abono`,{
+      url: `https://gentle-bush-024fdce10.azurestaticapps.net/#/reporte/abono/deuda/${deudaId}`
     }, { responseType: 'blob' });
   }
 

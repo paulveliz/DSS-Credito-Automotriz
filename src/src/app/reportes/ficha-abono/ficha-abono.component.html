@@ -1,0 +1,166 @@
+<div *ngIf="this.deuda; else noData" class="main">
+  
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" >
+        <tr>
+          <td class="outer-padding" valign="top" align="left">
+            <table class="w320" cellspacing="0" cellpadding="0" width="600" height="723">
+              <tr>
+        
+                <td class="col-1 hide-for-mobile">
+        
+                  <table cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td class="hide-for-mobile" style="padding:30px 0 10px 0;">
+                        <img width="40" height="31" src="https://www.filepicker.io/api/file/GNoaqKTQX6VXtdvaywb1" alt="logo" />
+                      </td>
+                    </tr>
+        
+                    <tr>
+                      <td class="hide-for-mobile"  height="150" valign="top" >
+                        <b>
+                          <span>Auto Shop</span>
+                          </b>
+                        <br>
+                        <span>ABONO</span>
+                      </td>
+                    </tr>
+        
+                    <tr>
+                      <td class="hide-for-mobile" style="height:180px; width:299px;">
+                        <img width="180" height="299"src="https://www.filepicker.io/api/file/3UaTJxcRScNj3PEVofl4" alt="large logo" />
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+        
+                <td valign="top" class="col-2">
+                  <table cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td class="body-cell body-cell-left-pad" width="355" height="661" valign="top">
+                        <table cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="355">
+                              <h1>
+                                ABONO A DEUDA: #
+                                <span>
+                                    {{deuda?.id}}
+                                </span>
+                              </h1>
+                              <h2>
+                                <span>
+                                  {{deuda?.fecha}}
+                                </span>
+                              </h2>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="355">
+                              <table class="data-table" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <th>
+                                    Cliente
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                      {{deuda?.idClienteNavigation?.nombreCompleto}}
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Concepto
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                      Comprobante de abono a deuda sobre la adquisicion del automovil {{automovil}}
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Abonos restantes
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                      {{deuda?.idFinanciamientoNavigation?.meses}}
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Importe del abono
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                      ${{deuda?.idFinanciamientoNavigation?.mensualidad}} MXN
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Fecha de abono
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <span>
+                                        {{deuda?.fecha}}
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>
+                                    Importe restante del adeudo
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <table cellpadding="0" cellspacing="0">
+                                      <tr>
+                                        <td class="data-table-amount" style="width: 85px;">
+                                          <span>
+                                            ${{deuda?.idFinanciamientoNavigation?.cantidadAFinanciar}} MXN
+                                          </span>
+                                        </td>
+                                        <td style="width: 315px;" align="left">
+                                          <img width="59" height="22" src="https://www.filepicker.io/api/file/vXIourdhTGSGGKdcdKgr" alt="paid">
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="355" class="footer">
+                                <img width="213" height="48" src="https://www.filepicker.io/api/file/2KMVSEJSOaxy1uHWWt1A">
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+        
+                    </tr>
+                  </table>
+                </td>
+        
+              </tr>
+            </table>
+          </td>
+        </tr>
+        </table>
+</div>
+
+<ng-template #noData>
+  <div class="main">
+    <h1>Cargando datos ...</h1>
+  </div>
+</ng-template>

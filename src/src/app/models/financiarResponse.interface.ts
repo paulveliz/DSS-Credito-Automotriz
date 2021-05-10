@@ -13,6 +13,32 @@ export interface FinanciarResponse {
     cantidad_a_financiar: number;
     meses:                number;
     mensualidad:          number;
+    automovil:            Automovil;
+}
+
+export interface Automovil {
+    id:                             number;
+    valorComecial:                  number;
+    urlImagen:                      string;
+    idPlanFinanciamiento:           number;
+    idModelo:                       number;
+    idModeloNavigation:             IDModeloNavigation;
+    idPlanFinanciamientoNavigation: null;
+}
+
+export interface IDModeloNavigation {
+    id:                number;
+    nombre:            string;
+    idMarca:           number;
+    idMarcaNavigation: IDMarcaNavigation;
+    autos:             any[];
+}
+
+export interface IDMarcaNavigation {
+    id:        number;
+    nombre:    string;
+    urlImagen: string;
+    modelos:   any[];
 }
 
 // Converts JSON strings to/from your types
@@ -166,5 +192,28 @@ const typeMap: any = {
         { json: "cantidad_a_financiar", js: "cantidad_a_financiar", typ: 0 },
         { json: "meses", js: "meses", typ: 0 },
         { json: "mensualidad", js: "mensualidad", typ: 0 },
+        { json: "automovil", js: "automovil", typ: r("Automovil") },
+    ], false),
+    "Automovil": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "valorComecial", js: "valorComecial", typ: 0 },
+        { json: "urlImagen", js: "urlImagen", typ: "" },
+        { json: "idPlanFinanciamiento", js: "idPlanFinanciamiento", typ: 0 },
+        { json: "idModelo", js: "idModelo", typ: 0 },
+        { json: "idModeloNavigation", js: "idModeloNavigation", typ: r("IDModeloNavigation") },
+        { json: "idPlanFinanciamientoNavigation", js: "idPlanFinanciamientoNavigation", typ: null },
+    ], false),
+    "IDModeloNavigation": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "nombre", js: "nombre", typ: "" },
+        { json: "idMarca", js: "idMarca", typ: 0 },
+        { json: "idMarcaNavigation", js: "idMarcaNavigation", typ: r("IDMarcaNavigation") },
+        { json: "autos", js: "autos", typ: a("any") },
+    ], false),
+    "IDMarcaNavigation": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "nombre", js: "nombre", typ: "" },
+        { json: "urlImagen", js: "urlImagen", typ: "" },
+        { json: "modelos", js: "modelos", typ: a("any") },
     ], false),
 };

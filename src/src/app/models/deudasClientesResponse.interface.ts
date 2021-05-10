@@ -1,6 +1,6 @@
 // To parse this data:
 //
-//   import { Convert } from "./file";
+//   import { Convert, DeudasClientesResponse } from "./file";
 //
 //   const deudasClientesResponse = Convert.toDeudasClientesResponse(json);
 //
@@ -31,15 +31,17 @@ export interface IDSolicitudNavigation {
 }
 
 export interface IDFinanciamientoNavigation {
-    id:                   number;
-    idCliente:            number;
-    valorDelAuto:         number;
-    enganche:             number;
-    cantidadAFinanciar:   number;
-    meses:                number;
-    mensualidad:          number;
-    deuda:                any[];
-    idClienteNavigation?: IDClienteNavigation;
+    id:                    number;
+    idCliente:             number;
+    valorDelAuto:          number;
+    enganche:              number;
+    cantidadAFinanciar:    number;
+    meses:                 number;
+    mensualidad:           number;
+    idAutomovil:           number;
+    idAutomovilNavigation: IDAutomovilNavigation;
+    deuda:                 any[];
+    idClienteNavigation?:  IDClienteNavigation;
 }
 
 export interface IDClienteNavigation {
@@ -59,15 +61,41 @@ export interface IDClienteNavigation {
     solicitudes:             IDSolicitudNavigation[];
 }
 
+export interface IDAutomovilNavigation {
+    id:                             number;
+    valorComecial:                  number;
+    urlImagen:                      string;
+    idPlanFinanciamiento:           number;
+    idModelo:                       number;
+    idModeloNavigation:             IDModeloNavigation;
+    idPlanFinanciamientoNavigation: null;
+    financiamientos:                any[];
+}
+
+export interface IDModeloNavigation {
+    id:                number;
+    nombre:            string;
+    idMarca:           number;
+    idMarcaNavigation: IDMarcaNavigation;
+    autos:             any[];
+}
+
+export interface IDMarcaNavigation {
+    id:        number;
+    nombre:    string;
+    urlImagen: string;
+    modelos:   any[];
+}
+
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toDeudasClientesResponse(json: string): DeudasClientesResponse[] {
-        return cast(JSON.parse(json), a(r("DeudasClientesResponse")));
+    public static toDeudasClientesResponse(json: string): DeudasClientesResponse {
+        return cast(JSON.parse(json), r("DeudasClientesResponse"));
     }
 
-    public static deudasClientesResponseToJson(value: DeudasClientesResponse[]): string {
-        return JSON.stringify(uncast(value, a(r("DeudasClientesResponse"))), null, 2);
+    public static deudasClientesResponseToJson(value: DeudasClientesResponse): string {
+        return JSON.stringify(uncast(value, r("DeudasClientesResponse")), null, 2);
     }
 }
 
@@ -233,6 +261,8 @@ const typeMap: any = {
         { json: "cantidadAFinanciar", js: "cantidadAFinanciar", typ: 0 },
         { json: "meses", js: "meses", typ: 0 },
         { json: "mensualidad", js: "mensualidad", typ: 0 },
+        { json: "idAutomovil", js: "idAutomovil", typ: 0 },
+        { json: "idAutomovilNavigation", js: "idAutomovilNavigation", typ: r("IDAutomovilNavigation") },
         { json: "deuda", js: "deuda", typ: a("any") },
         { json: "idClienteNavigation", js: "idClienteNavigation", typ: u(undefined, r("IDClienteNavigation")) },
     ], false),
@@ -251,5 +281,28 @@ const typeMap: any = {
         { json: "financiamientos", js: "financiamientos", typ: a(r("IDFinanciamientoNavigation")) },
         { json: "hijos", js: "hijos", typ: a("any") },
         { json: "solicitudes", js: "solicitudes", typ: a(r("IDSolicitudNavigation")) },
+    ], false),
+    "IDAutomovilNavigation": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "valorComecial", js: "valorComecial", typ: 0 },
+        { json: "urlImagen", js: "urlImagen", typ: "" },
+        { json: "idPlanFinanciamiento", js: "idPlanFinanciamiento", typ: 0 },
+        { json: "idModelo", js: "idModelo", typ: 0 },
+        { json: "idModeloNavigation", js: "idModeloNavigation", typ: r("IDModeloNavigation") },
+        { json: "idPlanFinanciamientoNavigation", js: "idPlanFinanciamientoNavigation", typ: null },
+        { json: "financiamientos", js: "financiamientos", typ: a("any") },
+    ], false),
+    "IDModeloNavigation": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "nombre", js: "nombre", typ: "" },
+        { json: "idMarca", js: "idMarca", typ: 0 },
+        { json: "idMarcaNavigation", js: "idMarcaNavigation", typ: r("IDMarcaNavigation") },
+        { json: "autos", js: "autos", typ: a("any") },
+    ], false),
+    "IDMarcaNavigation": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "nombre", js: "nombre", typ: "" },
+        { json: "urlImagen", js: "urlImagen", typ: "" },
+        { json: "modelos", js: "modelos", typ: a("any") },
     ], false),
 };

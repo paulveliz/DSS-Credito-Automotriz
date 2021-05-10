@@ -17,6 +17,7 @@ import { FinanciarPageComponent } from './financiar-page/financiar-page.componen
 import { ComprarAutomovilComponent } from './comprar-automovil/comprar-automovil.component';
 import { FichaPagoComponent } from './reportes/ficha-pago/ficha-pago.component';
 import { PerfilModule } from './perfil/perfil.module';
+import { FichaAbonoComponent } from './reportes/ficha-abono/ficha-abono.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PerfilModule } from './perfil/perfil.module';
     SolicitudPageComponent,
     FinanciarPageComponent,
     ComprarAutomovilComponent,
-    FichaPagoComponent
+    FichaPagoComponent,
+    FichaAbonoComponent
   ],
   imports: [
     BrowserModule,
