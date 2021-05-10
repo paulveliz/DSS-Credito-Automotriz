@@ -60,6 +60,13 @@ export class ComprarAutomovilComponent implements OnInit {
           saveAs(blob, 'ficha-pago.pdf');
           this.congrats = true;
           // this.router.navigate(['congrats']);
+        }, err => {
+          this.payEstatus(false);
+          this.openModal(false);
+          var blob = new Blob([err], { type: mediaType });
+          window.open(URL.createObjectURL(blob));
+          saveAs(blob, 'ficha-pago.pdf');
+          this.congrats = true;
         });
     }else{
       alert("Nada que comprar.");
