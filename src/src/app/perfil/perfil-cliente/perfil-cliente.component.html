@@ -15,7 +15,7 @@
         <button>Estado credicticio</button>
         <button>Historial</button>
         <button>Comprar de nuevo</button>
-        <button>Mi informacion</button>
+        <button (click)="openModalInfoCliente(true)">Mi informacion</button>
     </div>
 
     <p>Para nosotros tu opinion es muy importante, si tienes dudas por favor comunicate con nosotros a la brevedad posible.</p>
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-
+</div>
     <ng-template #loading>
         <header>Abonar a tu deuda</header>
         <div class="image-content">
@@ -66,4 +66,30 @@
             </p>
         </div>
     </ng-template>
+
+<div class="modal-info-client">
+    <div class="contenido">
+        <label (click)="openModalInfoCliente(false)" >X</label>
+            <header>Mi informacion</header>
+            <div class="image-content" *ngIf="this.cliente">
+                <p>
+                    Nuestra empresa es pionera en seguridad, por lo que nosotros te damos la opcion de poder
+                    encriptar tus datos y que solo tu tengas la llave para volver a desbloquear estos datos.
+                </p>
+                <section class="my-info">
+                    <i>Tu nombre:</i>
+                    <input type="text" value="{{cliente.datos_generales.nombre_completo}}">
+                    <i>Tu domicilio:</i>
+                    <input type="text" value="{{cliente.datos_generales.domicilio}}">
+                    <i>Curp</i>
+                    <input type="text" value="{{cliente.datos_generales.curp}}">
+                    <i>Fecha nacimiento</i>
+                    <input type="text" value="{{cliente.datos_generales.fecha_nacimiento}}">
+                    <i>Ingresos mensuales</i>
+                    <input type="text" value="${{cliente.datos_generales.ingresos_mensuales}}">
+
+                </section>
+                <button>ACEPTAR Y ABONAR</button>
+            </div>
+    </div>
 </div>

@@ -39,6 +39,13 @@ export class PerfilClienteComponent implements OnInit {
     modal.style.opacity = action ? '100%' : '0%';
   }
 
+  openModalInfoCliente(action:boolean){
+    const modal = <HTMLDivElement>document.querySelector('.modal-info-client');
+    console.log(modal)
+    modal.style.visibility = action ? 'visible' : 'hidden';
+    modal.style.opacity = action ? '100%' : '0%';
+  }
+
   cagarDeudas():void{
     this.selectedDeudas = !this.selectedDeudas;
     if(this.cliente){
