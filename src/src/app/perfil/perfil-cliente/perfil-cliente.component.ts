@@ -19,6 +19,7 @@ export class PerfilClienteComponent implements OnInit {
   public clickedDeuda:DeudasClientesResponse | null = null;
   public hasDataEncripted:VerifyEncryptResponse | null = null;
   public isLoading:boolean = false;
+  public curp:string = "";
 
   constructor(
     private route:ActivatedRoute,
@@ -28,6 +29,7 @@ export class PerfilClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.curp = params.clienteId;
       this.apiClient.ObtenerClientePorCurp(params.clienteId).subscribe(cliente =>{
         this.cliente = cliente;
         this.apiClient.VerificarEncriptado(cliente.datos_generales.id_cliente).subscribe(encrypted => {
@@ -56,7 +58,7 @@ export class PerfilClienteComponent implements OnInit {
   cagarDeudas():void{
     this.selectedDeudas = !this.selectedDeudas;
     if(this.cliente){
-      this.apiClient.ObtenerDeudasCliente(this.cliente.datos_generales.curp).subscribe(d =>{
+      this.apiClient.ObtenerDeudasCliente(this.curp).subscribe(d =>{
         this.deudas = d;
       });
     }else{
@@ -69,7 +71,7 @@ export class PerfilClienteComponent implements OnInit {
       this.isLoading = true;
       this.apiClient.AbonarAdeuda(this.clickedDeuda.id).subscribe(abono =>{
         if(this.cliente){
-          this.apiClient.ObtenerDeudasCliente(this.cliente.datos_generales.curp).subscribe(d =>{
+          this.apiClient.ObtenerDeudasCliente(this.curp).subscribe(d =>{
             this.deudas = d;
             // Generar reporte.
             if(this.clickedDeuda){
