@@ -5,8 +5,10 @@ import { environment } from 'src/environments/environment';
 import { AbonarDeudaResponse } from '../models/abonarDeudaResponse.interface';
 import { ClienteResponse } from '../models/clienteResponse.interface';
 import { DeudasClientesResponse } from '../models/deudasClientesResponse.interface';
+import { EncryptResponse } from '../models/encryptResponse.interface';
 import { PlanResponse } from '../models/planResponse.interface';
 import { SolicitudResponse } from '../models/solicitudResponse.interface';
+import { VerifyEncryptResponse } from '../models/verifyEncryptResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +63,17 @@ export class ClientesService {
 
   AbonarAdeuda(deudaId:number):Observable<AbonarDeudaResponse>{
     return this.http.post<AbonarDeudaResponse>(`${environment.apiUrl}/api/deudas/abonar/${deudaId}`, {});
+  }
+
+  EncriptarInformacion(clienteId:number):Observable<EncryptResponse>{
+    return this.http.post<EncryptResponse>(`${environment.apiUrl}/api/solicitudes/encrypt`, {
+      ClienteId: clienteId,
+      Clave: "SAMPLE",
+      Texto: "SAMPLE"
+    });
+  }
+
+  VerificarEncriptado(clienteId:number):Observable<VerifyEncryptResponse>{
+    return this.http.get<VerifyEncryptResponse>(`${environment.apiUrl}/api/solicitudes/is_encripted/${clienteId}`);
   }
 }

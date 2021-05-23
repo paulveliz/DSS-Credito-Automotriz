@@ -1,3 +1,8 @@
+img[src="../../../assets/loading.gif"]{
+    width: 80%;
+    align-self: center;
+}
+
 .main{
     display: flex;
     flex-flow: column wrap;
@@ -175,6 +180,86 @@
     color: black;
     box-shadow: 0px 0px 3px 1px black;
 }
+
+.modal-info-client{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.53);
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.my-info{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.info-panel{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.info-panel:first-child{
+    margin-right: 7px;
+}
+
+.modal-info-client button{
+    padding: 0.5em;
+    margin: 10px;
+    color: #fff;
+    background-color: rgb(142, 20, 20);
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 2px 0px black; 
+    transition: all 0.5s ease;
+    border-radius: 5px;
+}
+
+.modal-info-client button:hover{
+    box-shadow: 1px 1px 5px 0px black; 
+}
+
+.modal-info-client button:active{
+    box-shadow: 1px 1px 5px 0px rgb(10, 55, 218); 
+    color: blue;
+}
+
+.modal-info-client button::before{
+    content: '🔐';
+    padding: 5px;
+    font-size: 1em;
+}
+.modal-info-client button::after{
+    content: '🔐';
+    padding: 5px;
+    font-size: 1em;
+}
+.modal-info-client h1{
+    padding: 0;
+    margin-bottom: 1em;
+    font-weight: 700;
+    color: brown;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.info-panel input{
+    padding: 0.3em;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    margin-bottom: 2px;
+}
+
+.info-panel i{
+    font-size: 1.2em;
+}
+
 
 .main-deudas{
     display: flex;

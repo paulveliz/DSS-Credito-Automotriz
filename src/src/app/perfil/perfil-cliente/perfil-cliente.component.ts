@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClienteResponse } from 'src/app/models/clienteResponse.interface';
 import { DeudasClientesResponse, IDFinanciamientoNavigation } from 'src/app/models/deudasClientesResponse.interface';
+import { VerifyEncryptResponse } from 'src/app/models/verifyEncryptResponse.interface';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { ReportesService } from 'src/app/services/reportes.service';
 
@@ -16,6 +17,7 @@ export class PerfilClienteComponent implements OnInit {
   public deudas:DeudasClientesResponse[] | null = null;
   public selectedDeudas:boolean = false;
   public clickedDeuda:DeudasClientesResponse | null = null;
+  public hasDataEncripted:VerifyEncryptResponse | null = null;
   public isLoading:boolean = false;
 
   constructor(
@@ -28,6 +30,11 @@ export class PerfilClienteComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.apiClient.ObtenerClientePorCurp(params.clienteId).subscribe(cliente =>{
         this.cliente = cliente;
+        this.apiClient.VerificarEncriptado(cliente.datos_generales.id_cliente).subscribe(encrypted => {
+          if(encrypted){
+            this.hasDataEncripted = encrypted;
+          }
+        });
       });
     });
   }
@@ -35,6 +42,13 @@ export class PerfilClienteComponent implements OnInit {
   openModal(action:boolean, deuda:DeudasClientesResponse | null): void {
     this.clickedDeuda = deuda;
     const modal = <HTMLDivElement>document.querySelector('.modal');
+    modal.style.visibility = action ? 'visible' : 'hidden';
+    modal.style.opacity = action ? '100%' : '0%';
+  }
+
+  openModalInfoCliente(action:boolean){
+    const modal = <HTMLDivElement>document.querySelector('.modal-info-client');
+    console.log(modal)
     modal.style.visibility = action ? 'visible' : 'hidden';
     modal.style.opacity = action ? '100%' : '0%';
   }
@@ -77,6 +91,25 @@ export class PerfilClienteComponent implements OnInit {
           alert("ERROR: EL CLIENTE NO EXISTE EN EL ENTORNO.");
         }
       });
+    }
+  }
+
+  encriptarDatos(){
+    if(this.cliente){
+      this.isLoading = true;
+      this.apiClient.EncriptarInformacion(this.cliente?.datos_generales.id_cliente).subscribe(res => {
+        // Fix ??0
+        this.apiClient.ObtenerClientePorId(this.cliente?.datos_generales.id_cliente ?? 0).subscribe(cliente =>{
+          this.apiClient.VerificarEncriptado(cliente.datos_generales.id_cliente).subscribe(isEncrypted =>{
+            this.isLoading = false;
+            this.cliente = cliente;
+            this.hasDataEncripted = isEncrypted;
+            alert(res.msg);
+          })
+        }, err => alert('Ocurrio un error intentando obtener la informacion del cliente.'));
+      });
+    }else{
+      alert("ERROR: EL CLIENTE NO EXISTE EN EL ENTORNO.");
     }
   }
 
