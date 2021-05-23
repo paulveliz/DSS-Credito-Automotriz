@@ -71,12 +71,12 @@
     <div class="contenido">
         <label (click)="openModalInfoCliente(false)" >X</label>
             <header>Mi informacion</header>
-            <div class="image-content" *ngIf="this.cliente">
+            <div class="image-content" *ngIf="this.cliente && this.hasDataEncripted && !isLoading; else noClient">
                 <p>
                     Nuestra empresa es pionera en seguridad, por lo que nosotros te damos la opcion de poder
                     encriptar tus datos y que solo tu tengas la llave para volver a desbloquear estos datos.
                 </p>
-                <h1>SIN ENCRIPTAR</h1>
+                <h1>{{this.hasDataEncripted.msg}}</h1>
                 <section class="my-info">
                     <div class="info-panel">
                         <i>Tu nombre</i>
@@ -99,7 +99,7 @@
                         <input type="text" value="{{cliente.hijos.length}}" readonly>
                     </div>
                 </section>
-                <button (click)="encriptarDatos()">ENCRIPTAR MIS DATOS</button>
+                <button (click)="encriptarDatos()">{{hasDataEncripted.is_encripted ? 'DECRIPTAR DATOS' : 'ENCRIPTAR DATOS'}}</button>
             </div>
     </div>
 </div>

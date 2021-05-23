@@ -32,7 +32,7 @@ export class AccesoComponent implements OnInit {
     this.apiClientes.ObtenerClientePorCurp(curp.trim())
                     .subscribe(cliente =>{
                       this.loading(false);
-                      this.router.navigate([`perfil/cliente/${cliente.datos_generales.curp}`]);
+                      this.router.navigate([`perfil/cliente/${curp}`]);
                     }, err => {
                       this.loading(false);
                       alert(`El cliente con curp ${curp} no existe en el sistema.`);
