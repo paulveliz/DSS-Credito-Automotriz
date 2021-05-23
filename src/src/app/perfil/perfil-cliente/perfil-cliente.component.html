@@ -76,20 +76,30 @@
                     Nuestra empresa es pionera en seguridad, por lo que nosotros te damos la opcion de poder
                     encriptar tus datos y que solo tu tengas la llave para volver a desbloquear estos datos.
                 </p>
+                <h1>SIN ENCRIPTAR</h1>
                 <section class="my-info">
-                    <i>Tu nombre:</i>
-                    <input type="text" value="{{cliente.datos_generales.nombre_completo}}">
-                    <i>Tu domicilio:</i>
-                    <input type="text" value="{{cliente.datos_generales.domicilio}}">
-                    <i>Curp</i>
-                    <input type="text" value="{{cliente.datos_generales.curp}}">
-                    <i>Fecha nacimiento</i>
-                    <input type="text" value="{{cliente.datos_generales.fecha_nacimiento}}">
-                    <i>Ingresos mensuales</i>
-                    <input type="text" value="${{cliente.datos_generales.ingresos_mensuales}}">
-
+                    <div class="info-panel">
+                        <i>Tu nombre</i>
+                        <input type="text" value="{{cliente.datos_generales.nombre_completo}}" readonly>
+                        <i>Tu domicilio</i>
+                        <input type="text" value="{{cliente.datos_generales.domicilio}}" readonly>
+                        <i>Curp</i>
+                        <input type="text" value="{{cliente.datos_generales.curp}}" readonly>
+                        <i>Fecha nacimiento</i>
+                        <input type="text" value="{{cliente.datos_generales.fecha_nacimiento}}" readonly>
+                        <i>Ingresos mensuales</i>
+                        <input type="text" value="${{cliente.datos_generales.ingresos_mensuales}}" readonly>
+                    </div>
+                    <div class="info-panel">
+                        <i>Edad</i>
+                        <input type="text" value="{{cliente.datos_generales.edad}}" readonly>
+                        <i>Estado civil</i>
+                        <input type="text" value="{{cliente.datos_generales.estado_civil}}" readonly>
+                        <i>Hijos</i>
+                        <input type="text" value="{{cliente.hijos.length}}" readonly>
+                    </div>
                 </section>
-                <button>ACEPTAR Y ABONAR</button>
+                <button (click)="encriptarDatos()">ENCRIPTAR MIS DATOS</button>
             </div>
     </div>
 </div>

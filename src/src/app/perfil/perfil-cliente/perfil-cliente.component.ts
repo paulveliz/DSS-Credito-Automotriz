@@ -87,4 +87,8 @@ export class PerfilClienteComponent implements OnInit {
     }
   }
 
+  encriptarDatos(){
+    alert('works');
+  }
+
 }
